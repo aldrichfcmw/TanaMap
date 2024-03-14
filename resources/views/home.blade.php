@@ -9,18 +9,18 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>TanaMap</title>
+    <title> {{$title}} </title>
 
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
 
-    <!-- <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
-    <link rel="manifest" href="assets/img/favicons/manifest.json">
-    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png"> -->
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="asset/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="asset/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="asset/img/favicons/favicon.ico">
+    <link rel="manifest" href="asset/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="asset/img/favicons/mstile-150x150.png"> -->
+    <link rel="icon" type="image/png" href="{{asset('/img/favicons/favicon.png')}}">
     <meta name="theme-color" content="#ffffff">
 
     <!-- ===============================================-->
@@ -35,7 +35,7 @@
     <!-- ===============================================-->
     <main class="main" id="top">
       <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 bg-light opacity-85" data-navbar-on-scroll="data-navbar-on-scroll">
-        <div class="container"><a class="navbar-brand" href="index.html"><img class="d-inline-block align-top img-fluid" src="assets/img/gallery/logo-icon.png" alt="" width="50" /><span class="text-theme font-monospace fs-4 ps-2">TanaMap</span></a><button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="{{url('/')}}"><img class="d-inline-block align-top img-fluid" src="{{asset('/img/favicons/logo.png')}}" alt="" width="120" /></a><button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="#header">Home</a></li>
@@ -56,20 +56,21 @@
         <div class="container">
           <div class="row align-items-center min-vh-75 min-vh-lg-100">
             <div class="col-md-7 col-lg-6 col-xxl-5 py-6 text-sm-start text-center">
-              <h1 class="mt-6 mb-sm-4 fw-semi-bold lh-sm fs-4 fs-lg-5 fs-xl-6">A New Way to Invest <br class="d-block d-lg-block" />in Agriculture</h1>
-              <p class="mb-4 fs-1">Zou provides farmes, ranchers, private foresters, and agricultural producers with online self service applications and educational materials.</p><a class="btn btn-lg btn-success" href="#" role="button">Invest Now</a>
+              <h1 class="mt-6 mb-sm-4 fw-semi-bold lh-sm fs-4 fs-lg-5 fs-xl-6">A New Way <br class="d-block d-lg-block" />in Agriculture</h1>
+              <p class="mb-4 fs-1">TanaMap provides farmes, ranchers, private foresters, and agricultural producers with online self service applications.</p>
+              {{-- <a class="btn btn-lg btn-success" href="#" role="button">Invest Now</a> --}}
             </div>
           </div>
         </div>
       </section>
       <section class="py-5" id="Opportuanities">
-        <div class="bg-holder d-none d-sm-block" style="background-image:url(assets/img/illustrations/bg.png);background-position:top left;background-size:225px 755px;margin-top:-17.5rem;"></div>
+        <div class="bg-holder d-none d-sm-block" style="background-image:url({{asset('/img/backgrounds/bg.png')}});background-position:top left;background-size:225px 755px;margin-top:-17.5rem;"></div>
         <!--/.bg-holder-->
         <div class="container">
           <div class="row">
             <div class="col-lg-9 mx-auto text-center mb-3">
               <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">New Opportunities</h5>
-              <p class="mb-5">We are the first and the only crowdfunding platform enabling you to help finance our farmers.</p>
+              <p class="mb-5">We are the first and only mapping platform that allows you to help farmers.</p>
             </div>
           </div>
           <div class="row flex-center h-100">
@@ -80,7 +81,7 @@
                     <div class="text-center text-md-start card-hover"><img class="ps-3 icons" src="{{asset('/img/icons/farmer.svg')}}" height="60" alt="" />
                       <div class="card-body">
                         <h6 class="fw-bold fs-1 heading-color">Connect with our farmers</h6>
-                        <p class="mt-3 mb-md-0 mb-lg-2">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione</p>
+                        <p class="mt-3 mb-md-0 mb-lg-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit voluptas, dolore molestias expedita accusantium recusandae quae nesciunt velit excepturi voluptate laudantium modi eius, at commodi iste nemo molestiae perspiciatis consequatur?</p>
                       </div>
                     </div>
                   </div>
@@ -89,8 +90,8 @@
                   <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-6">
                     <div class="text-center text-md-start card-hover"><img class="ps-3 icons" src="{{asset('img/icons/growth.svg')}}" height="60" alt="" />
                       <div class="card-body">
-                        <h6 class="fw-bold fs-1 heading-color">Grow your business</h6>
-                        <p class="mt-3 mb-md-0 mb-lg-2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        <h6 class="fw-bold fs-1 heading-color">Grow your harvest</h6>
+                        <p class="mt-3 mb-md-0 mb-lg-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat consequuntur sapiente tempore ullam laudantium beatae praesentium temporibus odit! Dolorem suscipit fugit numquam officia non cupiditate mollitia est voluptates nobis deleniti.</p>
                       </div>
                     </div>
                   </div>
@@ -99,8 +100,8 @@
                   <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-6">
                     <div class="text-center text-md-start card-hover"><img class="ps-3 icons" src="{{asset('img/icons/planting.svg')}}" height="60" alt="" />
                       <div class="card-body">
-                        <h6 class="fw-bold fs-1 heading-color">Social Impact Invesment</h6>
-                        <p class="mt-3 mb-md-0 mb-lg-2">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos</p>
+                        <h6 class="fw-bold fs-1 heading-color">Harvest Impact Invesment</h6>
+                        <p class="mt-3 mb-md-0 mb-lg-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam a consequuntur omnis at reprehenderit eos eum ipsa! Optio rerum maxime officia ipsum excepturi veritatis architecto voluptatem qui. Omnis, reiciendis culpa.</p>
                       </div>
                     </div>
                   </div>
@@ -111,56 +112,14 @@
         </div>
       </section>
 
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-      <section class="py-5" id="invest">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-xl-9 mb-3">
-              <div class="row">
-                <div class="col-lg-9 mb-3">
-                  <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Invest on your convenience</h5>
-                  <p class="mb-5">Autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla</p>
-                </div>
-                <div class="col-md-6 mb-5">
-                  <div class="card text-white"><img class="card-img" src="assets/img/gallery/short-terms.png" alt="..." />
-                    <div class="card-img-overlay d-flex flex-column justify-content-center px-5 px-md-3 px-lg-5 bg-dark-gradient">
-                      <h6 class="text-success pt-2">NEW FARM TODAY</h6>
-                      <hr class="text-white" style="height:0.12rem;width:2.813rem" />
-                      <div class="pt-lg-3">
-                        <h6 class="fw-bold text-white fs-1 fs-md-2 fs-lg-3 w-xxl-50">Short terms investment</h6>
-                        <p class="w-xxl-75">Invest in farms that will be ready for harvest in 3-18 months</p><button class="btn btn-lg btn-light text-success" type="button">Browse Farm</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-5">
-                  <div class="card text-white"><img class="card-img" src="assets/img/gallery/fully-funded.png" alt="..." />
-                    <div class="card-img-overlay d-flex flex-column justify-content-center px-5 px-md-3 px-lg-5 bg-light-gradient">
-                      <h6 class="text-success pt-2">FULLY FUNDED</h6>
-                      <hr class="text-white" style="height:0.12rem;width:2.813rem" />
-                      <div class="pt-lg-3">
-                        <h6 class="fw-bold text-white fs-1 fs-md-2 fs-lg-3 w-xxl-50">Long terms investment</h6>
-                        <p class="w-xxl-75">Consider farms that have long term investment program.</p><button class="btn btn-lg btn-light text-success" type="button">Learn More</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div><!-- end of .container-->
-      </section><!-- <section> close ============================-->
-      <!-- ============================================-->
-
       <section class="py-0">
-        <div class="bg-holder" style="background-image:url(assets/img/illustrations/how-it-works.png);background-position:center bottom;background-size:cover;"></div>
+        <div class="bg-holder" style="background-image:url({{asset('/img/backgrounds/how-it-works.png')}});background-position:center bottom;background-size:cover;"></div>
         <!--/.bg-holder-->
         <div class="container-lg">
           <div class="row justify-content-center">
             <div class="col-sm-8 col-md-9 col-xl-5 text-center pt-8">
               <h5 class="fw-bold fs-3 fs-xxl-5 lh-sm mb-3 text-white">How it works</h5>
-              <p class="mb-5 text-white">Take your pick from the supply chain and participate in agribusiness projects that are backed up not only by Zou, but also by the best land, family heritage, innovation and overall superior expertise.</p>
+              <p class="mb-5 text-white">Take your pick from the supply chain and participate in agribusiness projects that are backed up not only by TanaMap, but also by the best land, family heritage, innovation and overall superior expertise.</p>
             </div>
             <div class="col-sm-9 col-md-12 col-xxl-9">
               <div class="theme-tab">
@@ -221,9 +180,9 @@
         <div class="container-lg">
           <div class="row flex-center">
             <div class="col-12 col-lg-10 col-xl-12">
-              <div class="bg-holder" style="background-image:url(assets/img/illustrations/testimonial-bg.png);background-position:top left;background-size:120px 83px;"></div>
+              <div class="bg-holder" style="background-image:url({{asset('/img/backgrounds/testimonial-bg.png')}});background-position:top left;background-size:120px 83px;"></div>
               <!--/.bg-holder-->
-              <h6 class="fs-3 fs-lg-4 fw-bold lh-sm">What investors like you <br />are saying about Zou</h6>
+              <h6 class="fs-3 fs-lg-4 fw-bold lh-sm">What investors like you <br />are saying about TanaMap</h6>
             </div>
             <div class="carousel slide pt-3" id="carouselExampleDark" data-bs-ride="carousel">
               <div class="carousel-inner">
@@ -232,7 +191,7 @@
                     <div class="col-md-4 mb-5 mb-md-0">
                       <div class="card h-100 shadow">
                         <div class="card-body my-3">
-                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/user-1.png" width="50" alt="" />
+                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="{{asset('/img/gallery/user-1.png')}}" width="50" alt="" />
                             <div class="flex-1 align-items-center pt-2">
                               <h5 class="mb-0 fw-bold text-success">Fernando Soler</h5>
                               <p class="fw-normal text-black">Telecommunication Engineer</p>
@@ -245,7 +204,7 @@
                     <div class="col-md-4 mb-5 mb-md-0">
                       <div class="card h-100 shadow">
                         <div class="card-body my-3">
-                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/user-2.png" width="50" alt="" />
+                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="{{asset('/img/gallery/user-2.png')}}" width="50" alt="" />
                             <div class="flex-1 align-items-center pt-2">
                               <h5 class="mb-0 fw-bold text-success">Ilone Pickford</h5>
                               <p class="fw-normal text-black">Head of Agrogofund </p>
@@ -258,7 +217,7 @@
                     <div class="col-md-4 mb-5 mb-md-0">
                       <div class="card h-100 shadow">
                         <div class="card-body my-3">
-                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/user-3.png" width="50" alt="" />
+                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="{{asset('/img/gallery/user-3.png')}}" width="50" alt="" />
                             <div class="flex-1 align-items-center pt-2">
                               <h5 class="mb-0 fw-bold text-success">Ed O’Brien</h5>
                               <p class="fw-normal text-black">Herbalist</p>
@@ -270,12 +229,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item" data-bs-interval="2000">
+                {{-- <div class="carousel-item" data-bs-interval="2000">
                   <div class="row h-100 mx-3 mx-sm-5 mx-md-4 my-md-7 m-lg-7 mt-7">
                     <div class="col-md-4 mb-5 mb-md-0">
                       <div class="card h-100 shadow">
                         <div class="card-body my-3">
-                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/user-1.png" width="50" alt="" />
+                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="asset/img/gallery/user-1.png" width="50" alt="" />
                             <div class="flex-1 align-items-center pt-2">
                               <h5 class="mb-0 fw-bold text-success">Fernando Soler</h5>
                               <p class="fw-normal text-black">Telecommunication Engineer</p>
@@ -288,7 +247,7 @@
                     <div class="col-md-4 mb-5 mb-md-0">
                       <div class="card h-100 shadow">
                         <div class="card-body my-3">
-                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/user-2.png" width="50" alt="" />
+                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="asset/img/gallery/user-2.png" width="50" alt="" />
                             <div class="flex-1 align-items-center pt-2">
                               <h5 class="mb-0 fw-bold text-success">Ilone Pickford</h5>
                               <p class="fw-normal text-black">Head of Agrogofund Groups </p>
@@ -301,7 +260,7 @@
                     <div class="col-md-4 mb-5 mb-md-0">
                       <div class="card h-100 shadow">
                         <div class="card-body my-3">
-                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/user-3.png" width="50" alt="" />
+                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="asset/img/gallery/user-3.png" width="50" alt="" />
                             <div class="flex-1 align-items-center pt-2">
                               <h5 class="mb-0 fw-bold text-success">Ed O’Brien</h5>
                               <p class="fw-normal text-black">Herbalist</p>
@@ -312,50 +271,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="row h-100 mx-3 mx-sm-5 mx-md-4 my-md-7 m-lg-7 mt-7">
-                    <div class="col-md-4 mb-5 mb-md-0">
-                      <div class="card h-100 shadow">
-                        <div class="card-body my-3">
-                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/user-1.png" width="50" alt="" />
-                            <div class="flex-1 align-items-center pt-2">
-                              <h5 class="mb-0 fw-bold text-success">Fernando Soler</h5>
-                              <p class="fw-normal text-black">Telecommunication Engineer</p>
-                            </div>
-                          </div>
-                          <p class="mb-0 px-3 px-md-2 px-xxl-3">&quot;Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-4 mb-5 mb-md-0">
-                      <div class="card h-100 shadow">
-                        <div class="card-body my-3">
-                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/user-2.png" width="50" alt="" />
-                            <div class="flex-1 align-items-center pt-2">
-                              <h5 class="mb-0 fw-bold text-success">Ilone Pickford</h5>
-                              <p class="fw-normal text-black">Head of Agrogofund Groups </p>
-                            </div>
-                          </div>
-                          <p class="mb-0 px-3 px-md-2 px-xxl-3">&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-4 mb-5 mb-md-0">
-                      <div class="card h-100 shadow">
-                        <div class="card-body my-3">
-                          <div class="align-items-xl-center d-block d-xl-flex px-3"><img class="img-fluid me-3 me-md-2 me-lg-3" src="assets/img/gallery/user-3.png" width="50" alt="" />
-                            <div class="flex-1 align-items-center pt-2">
-                              <h5 class="mb-0 fw-bold text-success">Ed O’Brien</h5>
-                              <p class="fw-normal text-black">Herbalist</p>
-                            </div>
-                          </div>
-                          <p class="mb-0 px-3 px-md-2 px-xxl-3">&quot;Ui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </div> --}}
               </div>
               <div class="row px-3 px-sm-6 px-md-0 px-lg-5 px-xl-4">
                 <div class="col-12 position-relative"><a class="carousel-control-prev carousel-icon z-index-2" href="#carouselExampleDark" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next carousel-icon z-index-2" href="#carouselExampleDark" role="button" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></a></div>
@@ -373,7 +289,7 @@
             <div class="col-12">
               <div class="card shadow h-100 py-5">
                 <div class="card-body text-center">
-                  <h1 class="fw-semi-bold mb-4">The future of &nbsp;<span class="text-success">Farm Investing</span> &nbsp; is Zou</h1><a class="btn btn-lg btn-success px-6" href="#" role="button">Invest Now</a>
+                  <h1 class="fw-semi-bold mb-4">The future of &nbsp;<span class="text-success">Farm Mapping</span> &nbsp; is TanaMap</h1><a class="btn btn-lg btn-success px-6" href="#" role="button">Sign Up Now</a>
                 </div>
               </div>
             </div>
@@ -383,7 +299,7 @@
       <!-- ============================================-->
 
       <section class="py-0" id="contact">
-        <div class="bg-holder" style="background-image:url(assets/img/illustrations/footer-bg.png);background-position:center;background-size:cover;"></div>
+        <div class="bg-holder" style="background-image:url(asset/img/illustrations/footer-bg.png);background-position:center;background-size:cover;"></div>
         <!--/.bg-holder-->
         <div class="container">
           <div class="row justify-content-lg-between min-vh-75" style="padding-top:21rem">
@@ -401,7 +317,6 @@
               <ul class="list-unstyled mb-md-4 mb-lg-0">
                 <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Features</a></li>
                 <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">How it works</a></li>
-                <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Pricing</a></li>
                 <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Login</a></li>
               </ul>
             </div>
@@ -416,21 +331,21 @@
             <div class="col-12 col-lg-auto mb-3">
               <div class="card bg-success">
                 <div class="card-body p-sm-4">
-                  <h5 class="text-white">Blog Zou</h5>
-                  <p class="mb-0 text-white">write email to us<span class="text-white fs--1 fs-sm-1">info@zoufarm.com</span></p><button class="btn btn-light text-success" type="button"> <svg class="bi bi-person me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#76C279" viewBox="0 0 16 16">
+                  <h5 class="text-white">Blog Drik</h5>
+                  <p class="mb-0 text-white">write email to us <span class="text-white fs--1 fs-sm-1">aldrichfcmw@gmail.com</span></p><a class="btn btn-light text-success" type="button" href="mailto:aldrichfcmw@gmail.com"> <svg class="bi bi-person me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#76C279" viewBox="0 0 16 16">
                       <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
-                    </svg>Sing In</button>
+                    </svg>Sing In</a>
                 </div>
               </div>
             </div>
           </div>
-          <hr class="text-300 mb-0" />
+          <hr class="text-200 mb-0" />
           <div class="row flex-center py-5">
-            <div class="col-12 col-sm-8 col-md-6 text-center text-md-start"> <a class="text-decoration-none" href="#"><img class="d-inline-block align-top img-fluid" src="{{asset('/img/gallery/logo-icon.png')}}" alt="" width="40" /><span class="text-theme font-monospace fs-3 ps-2">Zou</span></a></div>
+            <div class="col-12 col-sm-8 col-md-6 text-center text-md-start"> <a class="text-decoration-none" href="#"><img class="d-inline-block align-top img-fluid" src="{{asset('/img/favicons/logo.png')}}" alt="" width="150" /></a></div>
             <div class="col-12 col-sm-8 col-md-6">
-              <p class="fs--1 text-dark my-2 text-center text-md-end">&copy; This template is made with&nbsp;<svg class="bi bi-suit-heart-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#76C279" viewBox="0 0 16 16">
+              <p class="fs--1 text-dark my-2 text-center text-md-end">&copy; This website is made with&nbsp;<svg class="bi bi-suit-heart-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#76C279" viewBox="0 0 16 16">
                   <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"></path>
-                </svg>&nbsp;by&nbsp;<a class="text-dark" href="https://themewagon.com/" target="_blank">ThemeWagon </a></p>
+                </svg>&nbsp;by&nbsp;<a class="text-dark" href="https://drik.my.id/" target="_blank">Drik </a></p>
             </div>
           </div>
         </div>
@@ -444,11 +359,11 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
-    <script src="vendors/@popperjs/popper.min.js"></script>
-    <script src="vendors/bootstrap/bootstrap.min.js"></script>
-    <script src="vendors/is/is.min.js"></script>
+    <script src="{{asset('vendor/popperjs/popper.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{asset('vendor/is/is.min.js')}}"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="{{asset('js/theme.js')}}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&amp;display=swap" rel="stylesheet">
   </body>
 
