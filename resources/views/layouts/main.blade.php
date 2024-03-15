@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr" data-theme="theme-default" data-assets-path="/" data-template="vertical-menu-template-light">
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="/" data-template="vertical-menu-template-light">
 
 <head>
     @include('layouts.head')
+    <link rel="stylesheet" href="{{asset('/vendor/libs/apex-charts/apex-charts.css')}}" />
 </head>
 <body>
     <!-- Layout wrapper -->
@@ -32,26 +33,11 @@
         <div class="drag-target"></div>
     </div>
     <!-- / Layout wrapper -->
-    
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-  
-    <script src="{{asset('/vendor/libs/jquery/jquery.js')}}"></script>
-    <script src="{{asset('/vendor/libs/popper/popper.js')}}"></script>
-    <script src="{{asset('/vendor/js/bootstrap.js')}}"></script>
-    <script src="{{asset('/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
-    <script src="{{asset('/vendor/libs/hammer/hammer.js')}}"></script>
-    <script src="{{asset('/vendor/libs/i18n/i18n.js')}}"></script> 
-    <script src="{{asset('/vendor/libs/typeahead-js/typeahead.js')}}"></script>
-    <script src="{{asset('/vendor/js/menu.js')}}"></script>
-  
-    <!-- endbuild -->
 
     <!-- Vendors JS -->
     <script src="{{asset('/vendor/libs/apex-charts/apexcharts.js')}}"></script>
-
-    <!-- Main JS -->
-    <script src="{{asset('/js/main.js')}}"></script>
+    
+    @include('layout.foot')
   
     <!-- Page JS -->
     <script src="{{asset('/js/dashboards-crm.js')}}"></script>

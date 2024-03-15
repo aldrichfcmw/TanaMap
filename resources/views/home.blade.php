@@ -44,7 +44,7 @@
               <li class="nav-item px-2"><a class="nav-link fw-medium" href="#invest">Invest</a></li>
               <li class="nav-item px-2"><a class="nav-link fw-medium" href="#contact">Contact </a></li>
             </ul>
-            <form class="d-flex"><button class="btn btn-lg btn-success bg-gradient order-0" type="submit">Sign Up</button></form>
+            <form class="d-flex"><a class="btn btn-lg btn-success bg-gradient order-0" href="{{url('/signup')}}">Sign Up</a></form>
           </div>
         </div>
       </nav>
