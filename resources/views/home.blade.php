@@ -299,7 +299,7 @@
       <!-- ============================================-->
 
       <section class="py-0" id="contact">
-        <div class="bg-holder" style="background-image:url(asset/img/illustrations/footer-bg.png);background-position:center;background-size:cover;"></div>
+        <div class="bg-holder" style="background-image:url({{asset('/img/backgrounds/footer-bg.png')}});background-position:center;background-size:cover;"></div>
         <!--/.bg-holder-->
         <div class="container">
           <div class="row justify-content-lg-between min-vh-75" style="padding-top:21rem">
@@ -359,9 +359,9 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
-    <script src="{{asset('vendor/popperjs/popper.min.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/bootstrap.min.js')}}"></script>
-    <script src="{{asset('vendor/is/is.min.js')}}"></script>
+    <script src="{{asset('vendor/libs/popper/popper.min.js')}}"></script>
+    <script src="{{asset('vendor/libs/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{asset('vendor/libs/is/is.min.js')}}"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
     <script src="{{asset('js/theme.js')}}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&amp;display=swap" rel="stylesheet">

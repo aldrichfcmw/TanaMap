@@ -16,24 +16,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
     <!-- Icons -->
-    <link rel="stylesheet" href="{{asset('/fonts/boxicons.css')}}" />
-    <link rel="stylesheet" href="{{asset('/fonts/fontawesome.css')}}" />
-    <link rel="stylesheet" href="{{asset('/fonts/flag-icons.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/fonts/boxicons.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/fonts/fontawesome.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/fonts/flag-icons.css')}}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{asset('/vendor/css/rtl/core.css')}}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{asset('/vendor/css/rtl/theme-default.css')}}" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{asset('/css/demo.css')}}" />
     
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{asset('/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" />
-    {{-- <link rel="stylesheet" href="{{asset('/vendor/typeahead-js/typeahead.css')}}" />  --}}
-    <link rel="stylesheet" href="{{asset('/vendor/apex-charts/apex-charts.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/typeahead-js/typeahead.css')}}" /> 
+    <link rel="stylesheet" href="{{asset('/vendor/libs/apex-charts/apex-charts.css')}}" />
 
     <!-- Page CSS -->
     
 
     <!-- Helpers -->
-    <script src="{{asset('/js/helpers.js')}}"></script>
-    <script src="{{asset('/js/template-customizer.js')}}"></script>
+    <script src="{{asset('/vendor/js/helpers.js')}}"></script>
+    <script src="{{asset('/vendor/js/template-customizer.js')}}"></script>
     <script src="{{asset('/js/config.js')}}"></script>
