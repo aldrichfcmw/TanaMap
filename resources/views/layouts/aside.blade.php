@@ -4,7 +4,7 @@
 
   
     <div class="app-brand demo ">
-      <a href="index.html" class="app-brand-link">
+      <a href="{{url('/')}}" class="app-brand-link">
         <span class="app-brand-logo demo" style="margin-left: -5%">
   
           <img src="{{asset('img/favicons/logo-icon.png')}}" alt="" srcset="" width="40" >

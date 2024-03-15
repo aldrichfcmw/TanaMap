@@ -1,4 +1,4 @@
 @extends('layouts.main')
 @section('content')
-aaa
+Testing Doang
 @endsection
