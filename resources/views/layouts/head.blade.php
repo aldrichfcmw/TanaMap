@@ -1,7 +1,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>{{$title}}</title>
+    <title>{{$title}} - {{$page}}</title>
 
     
     {{-- <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
@@ -25,7 +25,8 @@
     
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
-    <link rel="stylesheet" href="{{asset('/vendor/libs/typeahead-js/typeahead.css')}}" /> 
+    <link rel="stylesheet" href="{{asset('/vendor/libs/typeahead-js/typeahead.css')}}" />
+     
     <!-- Page CSS -->
     
 

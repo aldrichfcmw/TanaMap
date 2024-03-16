@@ -3,8 +3,10 @@
 
 <head>
     @include('layouts.head')
-    <link rel="stylesheet" href="{{asset('/vendor/libs/apex-charts/apex-charts.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/bs-stepper/bs-stepper.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/select2/select2.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/@form-validation/form-validation.css')}}" />
 </head>
 <body>
     <!-- Layout wrapper -->
@@ -38,14 +40,20 @@
     </div>
     <!-- / Layout wrapper -->
 
-    <!-- Vendors JS -->
-    <script src="{{asset('/vendor/libs/apex-charts/apexcharts.js')}}"></script>
-    <script src="{{asset('/vendor/libs/bs-stepper/bs-stepper.js')}}"></script>
-
     @include('layouts.foot')
-  
+
+    <!-- Vendors JS -->
+    <script src="{{asset('/vendor/libs/bs-stepper/bs-stepper.js')}}"></script>
+    <script src="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.js')}}"></script>
+    <script src="{{asset('/vendor/libs/select2/select2.js')}}"></script>
+    <script src="{{asset('/vendor/libs/@form-validation/popular.js')}}"></script>
+    <script src="{{asset('/vendor/libs/@form-validation/bootstrap5.js')}}"></script>
+    <script src="{{asset('/vendor/libs/@form-validation/auto-focus.js')}}"></script>
+    
     <!-- Page JS -->
-    <script src="{{asset('/js/dashboards-crm.js')}}"></script>
+
+    {{-- <script src="{{asset('/js/form-wizard-numbered.js')}}"></script> --}}
+    <script src="{{asset('/js/form-wizard-validation.js')}}"></script>
   
 </body>
 

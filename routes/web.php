@@ -30,3 +30,6 @@ Route::get('/signout',[AuthController::class,'signout']);
 Route::get('/signup',[AuthController::class,'signup']) -> name('signup');
 
 Route::get('/dashboard',[DashboardController::class,'index']) -> name('dashboard');
+Route::get('/user',[DashboardController::class,'user']) -> name('user');
+Route::get('/user-add',[DashboardController::class,'user_add']) -> name('user-add');
+Route::post('/user-add/create',[DashboardController::class,'create']) -> name('user.create');

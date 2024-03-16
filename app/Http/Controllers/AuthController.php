@@ -9,12 +9,14 @@ class AuthController extends Controller
 {
     //
     public function signin(){
-        $title = 'Sign In';
-        return view('auth.signin',compact('title'));
+        $title = 'Sign';
+        $page   = 'In';
+        return view('auth.signin',compact('title','page'));
     }
     public function signup(){
-        $title = 'Sign Up';
-        return view('auth.signup',compact('title'));
+        $title = 'Sign';
+        $page   = 'Up';
+        return view('auth.signup',compact('title','page'));
     }
     public function signout(){
         Auth::logout();
@@ -22,16 +24,16 @@ class AuthController extends Controller
     }
 
     public function auth_signin(Request $request){
-        // dd($request->all());
-        $data = [
-            'email'     => $request -> email,
-            'password'  => $request -> password,
-        ];
+        dd($request->all());
+        // $data = [
+        //     'email'     => $request -> email,
+        //     'password'  => $request -> password,
+        // ];
 
-        if(Auth::attemp($data)){
-            return redirect()->route('dashboard');
-        } else {
-            return redirect()->route('signin')->with('Error','Email atau Password Salah');
-        };
+        // if(Auth::attemp($data)){
+        //     return redirect()->route('dashboard');
+        // } else {
+        //     return redirect()->route('signin')->with('Error','Email atau Password Salah');
+        // };
     }
 }

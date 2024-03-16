@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('vendor/css/rtl/theme-default.css')}}" class="template-customizer-theme-css" />
     
     <!-- Vendor -->
-    <link rel="stylesheet" href="{{asset('vendor/libs/form-validation/form-validation.css')}}" />
+    <link rel="stylesheet" href="{{asset('vendor/libs/@form-validation/form-validation.css')}}" />
 
     <!-- Page CSS -->
     <!-- Page -->
@@ -48,9 +48,9 @@
     <!-- endbuild -->
   
     <!-- Vendors JS -->
-    <script src="{{asset('vendor/libs/form-validation/popular.js')}}"></script>
-    <script src="{{asset('vendor/libs/form-validation/bootstrap5.js')}}"></script>
-    <script src="{{asset('vendor/libs/form-validation/auto-focus.js')}}"></script>
+    <script src="{{asset('vendor/libs/@form-validation/popular.js')}}"></script>
+    <script src="{{asset('vendor/libs/@form-validation/bootstrap5.js')}}"></script>
+    <script src="{{asset('vendor/libs/@form-validation/auto-focus.js')}}"></script>
   
     @include('layouts\foot')
   
