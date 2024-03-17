@@ -5,16 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use PhpParser\Builder\Function_;
-use PhpParser\Node\Expr\FuncCall;
+use Illuminate\Support\Facades\Session;
+
 
 class DashboardController extends Controller
 {
     public function index(){
         $title  = 'Dashboard';
         $page   = 'Overview';
-        $data   =  User::get();
-        return view('dashboard.index',compact('title','page','data'));
+        return view('dashboard.index',compact('title','page'));
     }
 
     public function user(){
@@ -30,14 +29,17 @@ class DashboardController extends Controller
         return view('dashboard.add-user',compact('title','page'));
     }
 
-    public function create(Request $request){
+    public function storeUser(Request $request){
         // dd($request->all());
         $data =[
-            'name'     => $request->formValidationFirstName .' '. $request->formValidationLastName,
-            'username'  => $request->formValidationUsername,
-            'email'     => $request->formValidationEmail,
-            'password'  => Hash::make($request->formValidationPass),
+            'name'     => $request->name,
+            'username'  => $request->username,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password),
         ];
-        dd($data);
+        Session::flash('message', 'Akun berhasil dibuat');
+        // dd($data);
+        User::create($data);
+        return redirect()->route('user');
     }
 }

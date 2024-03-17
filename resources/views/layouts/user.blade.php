@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/select2/select2.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/@form-validation/form-validation.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/animate-css/animate.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/toastr/toastr.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/sweetalert2/sweetalert2.css')}}" />
 </head>
 <body>
     <!-- Layout wrapper -->
@@ -49,12 +52,35 @@
     <script src="{{asset('/vendor/libs/@form-validation/popular.js')}}"></script>
     <script src="{{asset('/vendor/libs/@form-validation/bootstrap5.js')}}"></script>
     <script src="{{asset('/vendor/libs/@form-validation/auto-focus.js')}}"></script>
-    
+    <script src="{{asset('/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
+    <script src="{{asset('/vendor/libs/toastr/toastr.js')}}"></script>
     <!-- Page JS -->
 
     {{-- <script src="{{asset('/js/form-wizard-numbered.js')}}"></script> --}}
-    <script src="{{asset('/js/form-wizard-validation.js')}}"></script>
-  
+    {{-- <script src="{{asset('/js/form-wizard-validation.js')}}"></script> --}}
+    <script src="{{asset('/js/ui-toasts.js')}}"></script>
+    {{-- <script>
+            toastr.option = {
+                "autoDismiss" : true,
+                "closeButton" : true,
+                "showMethod": "fadeIn",
+                "showDuration": 300,
+                "showEasing": "swing",
+                "hideMethod": "fadeOut",
+                "hideDuration": 1000,
+                "hideEasing": "linear",
+                "closeMethod": false,
+                "closeDuration": false,
+                "closeEasing": false,
+                "closeOnHover": true,
+            }
+        toastr.success("oke",'Success',{timeOut:6000});
+    </script> --}}
+    @if(Session::has('message'))
+        <script>
+            toastr.success("{{Session::get('message')}}");
+        </script>
+    @endif
 </body>
 
 </html>

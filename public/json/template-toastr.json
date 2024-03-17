@@ -1,0 +1,53 @@
+{
+    "toastId": 2,
+    "state": "hidden",
+    "startTime": "2024-03-16T19:33:59.750Z",
+    "options": {
+        "tapToDismiss": true,
+        "toastClass": "toast",
+        "containerId": "toast-container",
+        "debug": true,
+        "showMethod": "fadeIn",
+        "showDuration": 300,
+        "showEasing": "swing",
+        "hideMethod": "fadeOut",
+        "hideDuration": 1000,
+        "hideEasing": "linear",
+        "closeMethod": false,
+        "closeDuration": false,
+        "closeEasing": false,
+        "closeOnHover": true,
+        "extendedTimeOut": 1000,
+        "iconClasses": {
+            "error": "toast-error",
+            "info": "toast-info",
+            "success": "toast-success",
+            "warning": "toast-warning"
+        },
+        "iconClass": "toast-info",
+        "positionClass": "toast-top-right",
+        "timeOut": 5000,
+        "titleClass": "toast-title",
+        "messageClass": "toast-message",
+        "escapeHtml": false,
+        "target": "body",
+        "closeHtml": "<button type=\"button\">&times;</button>",
+        "closeClass": "toast-close-button",
+        "newestOnTop": false,
+        "preventDuplicates": false,
+        "progressBar": false,
+        "progressClass": "toast-progress",
+        "rtl": false,
+        "maxOpened": 1,
+        "autoDismiss": true,
+        "closeButton": false,
+        "onclick": null
+    },
+    "map": {
+        "type": "success",
+        "iconClass": "toast-success",
+        "message": "ok",
+        "title": "Success"
+    },
+    "endTime": "2024-03-16T19:34:05.765Z"
+}

@@ -5,6 +5,8 @@
     @include('layouts.head')
     <link rel="stylesheet" href="{{asset('/vendor/libs/apex-charts/apex-charts.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/bs-stepper/bs-stepper.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/animate-css/animate.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/sweetalert2/sweetalert2.css')}}" />
 </head>
 <body>
     <!-- Layout wrapper -->
@@ -41,6 +43,7 @@
     <!-- Vendors JS -->
     <script src="{{asset('/vendor/libs/apex-charts/apexcharts.js')}}"></script>
     <script src="{{asset('/vendor/libs/bs-stepper/bs-stepper.js')}}"></script>
+    <script src="{{asset('/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
 
     @include('layouts.foot')
   

@@ -1,6 +1,8 @@
-@extends('layouts.main')
+@extends('layouts.user')
 @section('content')
-<div class="card">
+<div class="row">
+  <div class="col-12">
+    <div class="card">
     <h5 class="card-header">Light Table head</h5>
     <div class="table-responsive text-nowrap">
       <table class="table">
@@ -32,5 +34,7 @@
         </tbody>
       </table>
     </div>
+</div>
+  </div>
 </div>
 @endsection
