@@ -7,7 +7,7 @@
               <div class="card">
                 {{-- <h5 class="card-header">Bootstrap Validation</h5> --}}
                 <div class="card-body">
-                  <form class="needs-validation was-validated" novalidate="" action="{{route('user.update',['username'=> $data->username])}}" method="POST">
+                  <form class="needs-validation" novalidate="" action="{{route('user.update',['username'=> $data->username])}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">

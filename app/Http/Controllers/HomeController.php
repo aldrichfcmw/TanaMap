@@ -10,4 +10,9 @@ class HomeController extends Controller
         $title = 'TanaMap';
         return view('home',compact('title'));
     }
+    public function coba(){
+        $title = 'TanaMap';
+        $page = 'coba';
+        return view('template.template-maps',compact('title','page'));
+    }
 }

@@ -23,16 +23,21 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 // });
 
 Route::get('/',[HomeController::class,'index']) -> name('home');
+Route::get('/coba',[HomeController::class,'coba']) -> name('coba');
 
 Route::get('/signin',[AuthController::class,'signin']) -> name('signin');
 Route::post('/signin/auth',[AuthController::class,'signinAuth']) -> name('auth.signin');
-Route::get('/signout',[AuthController::class,'signout']);
+Route::get('/signout',[AuthController::class,'signout']) -> name('auth.signout');;
 Route::get('/signup',[AuthController::class,'signup']) -> name('signup');
+Route::post('/signup/auth',[AuthController::class,'storeUser']) -> name('auth.signup');
 
-Route::get('/dashboard',[DashboardController::class,'index']) -> name('dashboard');
-Route::get('/user',[DashboardController::class,'user']) -> name('user');
-Route::get('/user/add',[DashboardController::class,'userAdd']) -> name('user.add');
-Route::post('/user/add/create',[DashboardController::class,'storeUser']) -> name('user.create');
-Route::get('/user/edit/{username}',[DashboardController::class,'userEdit']) -> name('user.edit');
-Route::put('/user/update/{username}',[DashboardController::class,'userUpdate']) -> name('user.update');
-Route::delete('/user/delete/{username}',[DashboardController::class,'userDelete']) -> name('user.delete');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => ''],function(){
+    Route::get('/dashboard',[DashboardController::class,'index']) -> name('dashboard');
+    Route::get('/user',[DashboardController::class,'user']) -> name('user');
+    Route::get('/user/add',[DashboardController::class,'userAdd']) -> name('user.add');
+    Route::post('/user/add/create',[DashboardController::class,'storeUser']) -> name('user.create');
+    Route::get('/user/edit/{username}',[DashboardController::class,'userEdit']) -> name('user.edit');
+    Route::put('/user/update/{username}',[DashboardController::class,'userUpdate']) -> name('user.update');
+    Route::delete('/user/delete/{username}',[DashboardController::class,'userDelete']) -> name('user.delete');
+    Route::get('/maps',[DashboardController::class,'maps']) -> name('maps');
+});

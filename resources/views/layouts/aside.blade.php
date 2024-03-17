@@ -34,6 +34,11 @@
             </a>
           </li>
           <li class="menu-item">
+            <a href="{{route('maps')}}" class="menu-link">
+              <div class="text-truncate" data-i18n="Maps">Maps</div>
+            </a>
+          </li>
+          <li class="menu-item">
             <a href="{{route('user')}}" class="menu-link">
               <div class="text-truncate" data-i18n="User">User</div>
             </a>

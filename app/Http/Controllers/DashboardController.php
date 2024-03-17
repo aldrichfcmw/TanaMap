@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -15,6 +14,12 @@ class DashboardController extends Controller
         $title  = 'Dashboard';
         $page   = 'Overview';
         return view('dashboard.index',compact('title','page'));
+    }
+
+    public function maps(){
+        $title  = 'Dashboard';
+        $page   = 'Maps';
+        return view('maps.index',compact('title','page'));
     }
 
     public function user(){
@@ -50,10 +55,8 @@ class DashboardController extends Controller
             'email'     => $request->email,
             'password'  => Hash::make($request->password),
         ];
-        Session::flash('success', 'Akun berhasil dibuat');
-        // dd($data);
         User::create($data);
-        return redirect()->route('user');
+        return redirect()->route('user')->with('success','Akun berhasil dibuat');
     }
 
     public function userEdit(Request $request,$uname){
@@ -86,21 +89,18 @@ class DashboardController extends Controller
         ];
         if($request->password) $data['password']  = Hash::make($request->password);
 
-        Session::flash('success', 'Akun berhasil diubah');
         // dd($data);
         User::whereUsername($uname)->update($data);
-        return redirect()->route('user');
+        return redirect()->route('user')->with('success','Akun berhasil diubah');
         
     }
 
     public function userDelete(Request $request,$uname){
         $data = User::whereUsername($uname);
-        // dd($data);
         if($data){
             $data -> delete();
-            Session::flash('success', 'Akun berhasil dihapus');
         }
 
-        return redirect()->route('user');
+        return redirect()->route('user')->with('success','Akun berhasil dihapus');
     }
 }

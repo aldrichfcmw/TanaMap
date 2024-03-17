@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="/" data-template="vertical-menu-template-light">
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="/" data-template="vertical-menu-template-dark">
 
 <head>
     @include('layouts.head')
-    {{-- <link rel="stylesheet" href="{{asset('/vendor/libs/bs-stepper/bs-stepper.css')}}" /> --}}
     <link rel="stylesheet" href="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/select2/select2.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/flatpickr/flatpickr.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/@form-validation/form-validation.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/typeahead-js/typeahead.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/libs/tagify/tagify.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/animate-css/animate.css')}}" />
-    <link rel="stylesheet" href="{{asset('/vendor/libs/toastr/toastr.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/sweetalert2/sweetalert2.css')}}" />
+
+    <!-- Helpers -->
+    <script src="{{asset('/vendor/js/helpers.js')}}"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js')}} in the <head> section -->
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js')}}.  -->
+    <script src="{{asset('/vendor/js/template-customizer.js')}}"></script>
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="{{asset('/js/config.js')}}"></script>
 </head>
 <body>
     <!-- Layout wrapper -->
@@ -49,41 +58,56 @@
     @include('layouts.foot')
 
     <!-- Vendors JS -->
-    {{-- <script src="{{asset('/vendor/libs/bs-stepper/bs-stepper.js')}}"></script> --}}
     <script src="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.js')}}"></script>
     <script src="{{asset('/vendor/libs/select2/select2.js')}}"></script>
+    <script src="{{asset('/vendor/libs/moment/moment.js')}}"></script>
+    <script src="{{asset('/vendor/libs/flatpickr/flatpickr.js')}}"></script>
+    <script src="{{asset('/vendor/libs/typeahead-js/typeahead.js')}}"></script>
+    <script src="{{asset('/vendor/libs/tagify/tagify.js')}}"></script>
     <script src="{{asset('/vendor/libs/@form-validation/popular.js')}}"></script>
     <script src="{{asset('/vendor/libs/@form-validation/bootstrap5.js')}}"></script>
     <script src="{{asset('/vendor/libs/@form-validation/auto-focus.js')}}"></script>
     <script src="{{asset('/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
-    <script src="{{asset('/vendor/libs/toastr/toastr.js')}}"></script>
     <!-- Page JS -->
-    <script>
 
-    </script>
+    <script src="{{asset('/js/form-validation.js')}}"></script>
+    @if($message = Session::get('success'))
     <script>
-        @if(Session::has('success'))
-            toastr.options = {
-                "positionClass": "toast-bottom-right",
-                "autoDismiss" : true,
-                "closeButton" : false,
-                "showMethod": "fadeIn",
-                "showDuration": 300,
-                "showEasing": "swing",
-                "hideMethod": "fadeOut",
-                "hideDuration": 1000,
-                "hideEasing": "linear",
-                "closeMethod": false,
-                "closeDuration": false,
-                "closeEasing": false,
-                "closeOnHover": true,
-            }
-            toastr.success("{{Session::get('success')}}");
-        @endif
-        @if(Session::has('error'))
-            toastr.error("{{Session::get('error')}}");
-        @endif
+    Swal.fire({
+                icon: 'success', // Tipe ikon (success, error, warning, info)
+                text: '{{ $message }}', // Pesan toast
+                toast: true, // Tentukan bahwa ini adalah toast
+                position: 'bottom-end', // Posisi toast (top-start, top-end, bottom-start, bottom-end)
+                showConfirmButton: false, // Tampilkan tombol OK
+                background:"#fff",
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
     </script>
+    @endif
+    @if($message = Session::get('error'))
+    <script>
+      Swal.fire({
+                icon: 'error', // Tipe ikon (success, error, warning, info)
+                text: '{{ $message }}', // Pesan toast
+                toast: true, // Tentukan bahwa ini adalah toast
+                position: 'bottom-end', // Posisi toast (top-start, top-end, bottom-start, bottom-end)
+                showConfirmButton: false, // Tampilkan tombol OK
+                background:"#fff",
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+    </script>
+    @endif    
+
     @if ($errors->any())
     <script>
         @foreach ($errors->all() as $error)

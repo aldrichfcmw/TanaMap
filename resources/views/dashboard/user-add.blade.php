@@ -5,9 +5,8 @@
             <!-- Validation Wizard -->
             <div class="col-12">
               <div class="card">
-                {{-- <h5 class="card-header">Bootstrap Validation</h5> --}}
                 <div class="card-body">
-                  <form class="needs-validation was-validated" novalidate="" action="{{route('user.create')}}" method="POST">
+                  <form class="needs-validation" novalidate="" action="{{route('user.create')}}" method="POST">
                     @csrf
                     <div class="mb-3">
                       <label class="form-label" for="bs-validation-name">Name</label>
