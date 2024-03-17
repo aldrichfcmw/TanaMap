@@ -39,7 +39,7 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{route('user-add')}}" class="menu-link">
+            <a href="{{route('user.add')}}" class="menu-link">
               <div class="text-truncate" data-i18n="Add-User">Add-User</div>
             </a>
           </li>

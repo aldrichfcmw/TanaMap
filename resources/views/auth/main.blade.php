@@ -13,7 +13,7 @@
     <!-- Page CSS -->
     <!-- Page -->
     <link rel="stylesheet" href="{{asset('vendor/css/pages/page-auth.css')}}">
-
+    <link rel="stylesheet" href="{{asset('/vendor/libs/sweetalert2/sweetalert2.css')}}" />
     
 </head>
 <body>
@@ -51,12 +51,36 @@
     <script src="{{asset('vendor/libs/@form-validation/popular.js')}}"></script>
     <script src="{{asset('vendor/libs/@form-validation/bootstrap5.js')}}"></script>
     <script src="{{asset('vendor/libs/@form-validation/auto-focus.js')}}"></script>
-  
+    <script src="{{asset('/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
     @include('layouts\foot')
   
     <!-- Page JS -->
     <script src="{{asset('js/pages-auth.js')}}"></script>
-    
+    @if($message = Session::get('error'))
+    <script>
+      Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "{{ $message }}",
+          background:"#fff",
+      });
+  </script>
+    @endif  
+    <script>
+      Swal.fire({
+                icon: 'success', // Tipe ikon (success, error, warning, info)
+                text: 'Signed in successfully', // Pesan toast
+                toast: true, // Tentukan bahwa ini adalah toast
+                position: 'top-end', // Posisi toast (top-start, top-end, bottom-start, bottom-end)
+                showConfirmButton: false, // Tampilkan tombol OK
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+    </script>
   </body>
   
   </html>

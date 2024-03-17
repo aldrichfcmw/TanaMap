@@ -3,7 +3,7 @@
 
 <head>
     @include('layouts.head')
-    <link rel="stylesheet" href="{{asset('/vendor/libs/bs-stepper/bs-stepper.css')}}" />
+    {{-- <link rel="stylesheet" href="{{asset('/vendor/libs/bs-stepper/bs-stepper.css')}}" /> --}}
     <link rel="stylesheet" href="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/select2/select2.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/@form-validation/form-validation.css')}}" />
@@ -27,6 +27,9 @@
                             <span class="text-muted fw-light">{{$title}}/</span> {{$page}}
                         </h4>
                         @yield('content')
+
+                        
+
                     </div>
                     <!-- / Content -->
                     @include('layouts.footer')
@@ -46,7 +49,7 @@
     @include('layouts.foot')
 
     <!-- Vendors JS -->
-    <script src="{{asset('/vendor/libs/bs-stepper/bs-stepper.js')}}"></script>
+    {{-- <script src="{{asset('/vendor/libs/bs-stepper/bs-stepper.js')}}"></script> --}}
     <script src="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.js')}}"></script>
     <script src="{{asset('/vendor/libs/select2/select2.js')}}"></script>
     <script src="{{asset('/vendor/libs/@form-validation/popular.js')}}"></script>
@@ -55,14 +58,15 @@
     <script src="{{asset('/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
     <script src="{{asset('/vendor/libs/toastr/toastr.js')}}"></script>
     <!-- Page JS -->
+    <script>
 
-    {{-- <script src="{{asset('/js/form-wizard-numbered.js')}}"></script> --}}
-    {{-- <script src="{{asset('/js/form-wizard-validation.js')}}"></script> --}}
-    <script src="{{asset('/js/ui-toasts.js')}}"></script>
-    {{-- <script>
-            toastr.option = {
+    </script>
+    <script>
+        @if(Session::has('success'))
+            toastr.options = {
+                "positionClass": "toast-bottom-right",
                 "autoDismiss" : true,
-                "closeButton" : true,
+                "closeButton" : false,
                 "showMethod": "fadeIn",
                 "showDuration": 300,
                 "showEasing": "swing",
@@ -74,13 +78,23 @@
                 "closeEasing": false,
                 "closeOnHover": true,
             }
-        toastr.success("oke",'Success',{timeOut:6000});
-    </script> --}}
-    @if(Session::has('message'))
-        <script>
-            toastr.success("{{Session::get('message')}}");
-        </script>
-    @endif
+            toastr.success("{{Session::get('success')}}");
+        @endif
+        @if(Session::has('error'))
+            toastr.error("{{Session::get('error')}}");
+        @endif
+    </script>
+    @if ($errors->any())
+    <script>
+        @foreach ($errors->all() as $error)
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "{{ $error }}",
+        });
+        @endforeach
+    </script>
+    @endif   
 </body>
 
 </html>

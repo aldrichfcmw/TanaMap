@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -23,17 +26,26 @@ class AuthController extends Controller
         return redirect()->route('signin')->with('Succes','Akun telah terlogout');
     }
 
-    public function auth_signin(Request $request){
-        dd($request->all());
-        // $data = [
-        //     'email'     => $request -> email,
-        //     'password'  => $request -> password,
-        // ];
+    public function signinAuth(Request $request){
+        $validator = Validator::make($request->all(), [
+            'email'     => 'required|email',
+            'password'  => 'required|min:6',
+        ]);
 
-        // if(Auth::attemp($data)){
-        //     return redirect()->route('dashboard');
-        // } else {
-        //     return redirect()->route('signin')->with('Error','Email atau Password Salah');
-        // };
+        if ($validator->fails()) {
+            // Jika validasi gagal, kembali ke halaman sebelumnya dengan input lama dan pesan kesalahan
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $data = [
+            'email'     => $request -> email,
+            'password'  => $request -> password,
+        ];
+
+        if(Auth::attempt($data)){
+            return redirect()->route('dashboard');
+        } else {
+            return redirect()->route('signin')->with('error','Email atau Password Salah');
+        };
     }
 }
