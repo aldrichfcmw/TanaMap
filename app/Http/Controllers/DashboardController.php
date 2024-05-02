@@ -21,6 +21,11 @@ class DashboardController extends Controller
         $page   = 'Maps';
         return view('maps.index',compact('title','page'));
     }
+    public function weather(){
+        $title  = 'Dashboard';
+        $page   = 'Weather';
+        return view('weather.index',compact('title','page'));
+    }
 
     public function user(){
         $title  = 'Dashboard';

@@ -52,7 +52,7 @@
     <script src="{{asset('vendor/libs/@form-validation/bootstrap5.js')}}"></script>
     <script src="{{asset('vendor/libs/@form-validation/auto-focus.js')}}"></script>
     <script src="{{asset('/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
-    @include('layouts\foot')
+    @include('layouts.foot')
   
     <!-- Page JS -->
     <script src="{{asset('js/pages-auth.js')}}"></script>

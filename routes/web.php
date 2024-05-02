@@ -39,5 +39,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => ''],functio
     Route::get('/user/edit/{username}',[DashboardController::class,'userEdit']) -> name('user.edit');
     Route::put('/user/update/{username}',[DashboardController::class,'userUpdate']) -> name('user.update');
     Route::delete('/user/delete/{username}',[DashboardController::class,'userDelete']) -> name('user.delete');
-    Route::get('/maps',[DashboardController::class,'maps']) -> name('maps');
+    Route::get('dashboard/maps',[DashboardController::class,'maps']) -> name('maps');
+    Route::get('dashboard/weather',[DashboardController::class,'weather']) -> name('weather');
 });
