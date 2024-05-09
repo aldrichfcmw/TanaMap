@@ -39,12 +39,10 @@
           <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="#header">Home</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-medium" href="#Opportuanities">Opportuanities</a></li>
               <li class="nav-item px-2"><a class="nav-link fw-medium" href="#testimonial">Testimonial</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-medium" href="#invest">Invest</a></li>
               <li class="nav-item px-2"><a class="nav-link fw-medium" href="#contact">Contact </a></li>
             </ul>
-            <form class="d-flex"><a class="btn btn-lg btn-success bg-gradient order-0" href="{{url('/signup')}}">Sign Up</a></form>
+            <a class="btn btn-lg btn-success bg-gradient order-0" href="{{url('/signin')}}">Sign In</a>
           </div>
         </div>
       </nav>

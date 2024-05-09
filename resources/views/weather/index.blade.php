@@ -15,7 +15,7 @@
             <p class="card-text">
               32
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
             <p class="card-text">
               22
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
             <p class="card-text">
               22
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
             <p class="card-text">
               22
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
             <p class="card-text">
               32
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@
             <p class="card-text">
               22
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            
           </div>
         </div>
       </div>
@@ -126,13 +126,29 @@
             <p class="card-text">
               22
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+  <div class="col-md">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <i class="bx bx-wind" style="font-size: 5em;"></i>
+      </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Koordinat</h5>
+            <p class="card-text">
+              -7.090, 112.000
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!--/ Horizontal -->
 

@@ -11,20 +11,16 @@ use Illuminate\Support\Facades\Validator;
 class DashboardController extends Controller
 {
     public function index(){
+        // dd(auth()->user()->getRoleNames());
         $title  = 'Dashboard';
         $page   = 'Overview';
         return view('dashboard.index',compact('title','page'));
-    }
-
-    public function maps(){
-        $title  = 'Dashboard';
-        $page   = 'Maps';
-        return view('maps.index',compact('title','page'));
-    }
-    public function weather(){
-        $title  = 'Dashboard';
-        $page   = 'Weather';
-        return view('weather.index',compact('title','page'));
+        // if(Auth()->user()->can('farmer')){
+        //     $title  = 'Dashboard';
+        //     $page   = 'Overview';
+        //     return view('dashboard.index',compact('title','page'));
+        // }
+        // return abort(403);
     }
 
     public function user(){

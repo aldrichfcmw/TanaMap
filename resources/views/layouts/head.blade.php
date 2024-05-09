@@ -26,7 +26,7 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
     <link rel="stylesheet" href="{{asset('/vendor/libs/typeahead-js/typeahead.css')}}" />
-     
+    <link rel="stylesheet" href="{{asset('/vendor/libs/animate-css/animate.css')}}" />
     <!-- Page CSS -->
     
 

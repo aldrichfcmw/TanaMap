@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
 class AuthController extends Controller
 {
     //
@@ -43,10 +44,40 @@ class AuthController extends Controller
         ];
 
         if(Auth::attempt($data)){
-            return redirect()->route('dashboard')->with('success','SignIn Berhasil');
-        } else {
+            // dd($data);
+            $user = Auth::user();
+            $role = $user->roles->first()->name;
+            // dd($role);
+            switch ($role) {
+                case 'admin':
+                    return redirect()->route('dashboard')->with('success','SignIn Berhasil');
+                    break;
+                case 'guest':
+                    return redirect()->route('tani.dash')->with('success','SignIn Berhasil');
+                    break;
+                case 'farmer_hpt':
+                    return redirect()->route('tani.hpt')->with('success','SignIn Berhasil');
+                    break;
+                case 'farmer_growth':
+                    return redirect()->route('tani.growth')->with('success','SignIn Berhasil');
+                    break;
+                case 'farmer_tool':
+                    return redirect()->route('tani.tool')->with('success','SignIn Berhasil');
+                    break;
+                case 'farmer_weather':
+                    return redirect()->route('tani.weather')->with('success','SignIn Berhasil');
+                    break;   
+            }
+            
+        }
+        else{
             return redirect()->route('signin')->with('error','Email atau Password Salah');
-        };
+        }
+        // if(Auth::attempt($data)){
+        //     return redirect()->route('dashboard')->with('success','SignIn Berhasil');
+        // } else {
+        //     return redirect()->route('signin')->with('error','Email atau Password Salah');
+        // };
     }
 
     public function storeUser(Request $request){
