@@ -16,10 +16,10 @@
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar  ">
         <div class="layout-container">
-            @include('layouts.aside')
+            @include('layouts-farmer.menu')
             <!-- Layout container -->
             <div class="layout-page">
-                @include('layouts.navbar')
+                @include('layouts-farmer.navbar')
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->

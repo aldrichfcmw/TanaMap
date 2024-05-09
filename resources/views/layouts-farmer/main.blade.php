@@ -12,7 +12,7 @@
             @include('layouts-farmer.menu')
             <!-- Layout container -->
             <div class="layout-page">
-                {{-- @include('layouts-farmer.navbar') --}}
+                @include('layouts-farmer.navbar')
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->

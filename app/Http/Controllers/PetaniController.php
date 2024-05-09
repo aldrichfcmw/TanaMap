@@ -34,6 +34,6 @@ class PetaniController extends Controller
     public function weather(){
         $title  = 'Dashboard';
         $page   = 'Weather';
-        return view('weather.index',compact('title','page'));
+        return view('farmer.weather',compact('title','page'));
     }
 }

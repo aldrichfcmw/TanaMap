@@ -24,17 +24,16 @@ class PermissionSeeder extends Seeder
         Permission::updateOrCreate(['name' => 'view weather'],['name' => 'view weather']);
 
         $role1 = Role::updateOrCreate(['name' => 'admin'],['name' => 'admin']);
-        $role1 ->givePermissionTo('admin');
+        $role1 -> givePermissionTo('admin');
         $role2 = Role::updateOrCreate(['name' => 'guest'],['name' => 'guest']);
-        $role2 ->givePermissionTo('farmer');
+        $role2 -> givePermissionTo('guest');
         $role3 = Role::updateOrCreate(['name' => 'farmer hpt'],['name' => 'farmer hpt']);
-        $role3 ->givePermissionTo('view hpt');
+        $role3 -> givePermissionTo('view hpt');
         $role4 = Role::updateOrCreate(['name' => 'farmer growth'],['name' => 'farmer growth']);
-        $role4 ->givePermissionTo('view growth');
+        $role4 -> givePermissionTo('view growth');
         $role5 = Role::updateOrCreate(['name' => 'farmer tool'],['name' => 'farmer tool']);
-        $role5 ->givePermissionTo('view tool');
+        $role5 -> givePermissionTo('view tool');
         $role6 = Role::updateOrCreate(['name' => 'farmer weather'],['name' => 'farmer weather']);
-        $role6 ->givePermissionTo('view weather');
-
+        $role6 -> givePermissionTo('view weather');
     }
 }

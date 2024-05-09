@@ -52,10 +52,10 @@ Route::group(['prefix' => '/', 'middleware' => ['auth'], 'as' => ''],function(){
     */
 });
 
-Route::group(['prefix'=> '/petani','middleware'=> ['auth','role:guest'], 'as'=> ''],function(){
-    Route::get('/dashboard',[PetaniController::class,'index']) -> name('tani.dash');
-    Route::get('/maps',[PetaniController::class,'maps']) -> name('tani.maps');
-    Route::get('/growth',[PetaniController::class,'growth']) -> name('tani.growth');
-    Route::get('/tool',[PetaniController::class,'tool']) -> name('tool');
-    Route::get('/weather',[PetaniController::class,'weather']) -> name('tani.weather');
+Route::group(['prefix'=> '/petani','middleware'=> ['auth','role:admin|guest|farmer hpt|farmer growth|farmer tool|farmer weather'], 'as'=> ''],function(){
+    Route::get('/dashboard',[PetaniController::class,'index'])  -> name('tani.dash')    ->middleware(['permission:admin|guest']);
+    Route::get('/maps',[PetaniController::class,'maps'])        -> name('tani.maps')    ->middleware(['permission:admin|view hpt|guest']);
+    Route::get('/growth',[PetaniController::class,'growth'])    -> name('tani.growth')  ->middleware(['permission:admin|view growth']);
+    Route::get('/tool',[PetaniController::class,'tool'])        -> name('tool')         ->middleware(['permission:admin|view tool']);
+    Route::get('/weather',[PetaniController::class,'weather'])  -> name('tani.weather') ->middleware(['permission:admin|view weather|guest']);
 });
