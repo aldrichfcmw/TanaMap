@@ -20,6 +20,7 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
+      <li class="menu-header small text-uppercase"><span class="menu-header-text" data-i18n="Dashboard">Dashboard</span></li>
       <!-- Dashboards -->
       <li class="menu-item {{ $page == 'Overview' ? 'active' : '' }}">
         <a href="{{route('dashboard')}}" class="menu-link">
@@ -28,29 +29,29 @@
         </a>
       </li>
 
-      <li class="menu-item {{ $page == 'Farmer' ? 'active' : '' }}">
+      <li class="menu-item {{ $title == 'Farmer' ? 'active' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bxs-florist"></i>
           <div class="text-truncate" data-i18n="Farmers">Farmers</div>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{route('')}}" class="menu-link">
+            <a href="{{route('hpt')}}" class="menu-link">
               <div class="text-truncate" data-i18n="HPT">HPT</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{route('')}}" class="menu-link">
+            <a href="{{route('growth')}}" class="menu-link">
               <div class="text-truncate" data-i18n="Growth">Growth</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{route('')}}" class="menu-link">
+            <a href="{{route('tool')}}" class="menu-link">
               <div class="text-truncate" data-i18n="Tool">Tool</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{route('')}}" class="menu-link">
+            <a href="{{route('weather')}}" class="menu-link">
               <div class="text-truncate" data-i18n="Weather">Weather</div>
             </a>
           </li>

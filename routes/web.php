@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PetaniController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -35,14 +36,19 @@ Route::post('/signup/auth',[AuthController::class,'storeUser']) -> name('auth.si
 
 Route::group(['prefix' => '/', 'middleware' => ['auth','role:admin'], 'as' => ''],function(){
     Route::get('/dashboard',[DashboardController::class,'index']) -> name('dashboard');
-    Route::get('/user',[DashboardController::class,'user']) -> name('user');
-    Route::get('/user/add',[DashboardController::class,'userAdd']) -> name('user.add');
-    Route::post('/user/add/create',[DashboardController::class,'storeUser']) -> name('user.create');
-    Route::get('/user/edit/{username}',[DashboardController::class,'userEdit']) -> name('user.edit');
-    Route::put('/user/update/{username}',[DashboardController::class,'userUpdate']) -> name('user.update');
-    Route::delete('/user/delete/{username}',[DashboardController::class,'userDelete']) -> name('user.delete');
+    Route::get('/hpt',[DashboardController::class,'hpt']) -> name('hpt');
+    Route::get('/growth',[DashboardController::class,'growth']) -> name('growth');
+    Route::get('/tool',[DashboardController::class,'tool']) -> name('tool');
+    Route::get('/weather',[DashboardController::class,'weather']) -> name('weather');
     Route::delete('/maps',[DashboardController::class,'maps']) -> name('maps');
     
+    Route::get('/user',[UserController::class,'user']) -> name('user');
+    Route::get('/user/add',[UserController::class,'userAdd']) -> name('user.add');
+    Route::post('/user/add/create',[UserController::class,'storeUser']) -> name('user.create');
+    Route::get('/user/edit/{username}',[UserController::class,'userEdit']) -> name('user.edit');
+    Route::put('/user/update/{username}',[UserController::class,'userUpdate']) -> name('user.update');
+    Route::delete('/user/delete/{username}',[UserController::class,'userDelete']) -> name('user.delete');
+
     /* 
         Middleware dengan laravel gate
         'middleware' => ['auth','can:{permission:farmer}']

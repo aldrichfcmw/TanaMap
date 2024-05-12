@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 
 class AuthController extends Controller
@@ -100,7 +101,10 @@ class AuthController extends Controller
             'email'     => $request->email,
             'password'  => Hash::make($request->password),
         ];
-        User::create($data);
+        
+        $user = User::create($data);
+        $role = Role::where('name', 'guest')->first();
+        $user->assignRole($role);
         return redirect()->route('signin')->with('success','Akun berhasil dibuat');
     }
 }

@@ -28,7 +28,7 @@ class PetaniController extends Controller
     public function growth(){
         $title  = 'Dashboard';
         $page   = 'Growth';
-        return view('maps.index',compact('title','page'));
+        return view('farmer.growth',compact('title','page'));
     }
 
     public function weather(){
