@@ -21,40 +21,64 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboards -->
-      <li class="menu-item active open">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <li class="menu-item {{ $page == 'Overview' ? 'active' : '' }}">
+        <a href="{{route('dashboard')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
-          <span class="badge badge-center rounded-pill bg-danger ms-auto">5</span>
+        </a>
+      </li>
+
+      <li class="menu-item {{ $page == 'Farmer' ? 'active' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bxs-florist"></i>
+          <div class="text-truncate" data-i18n="Farmers">Farmers</div>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{route('dashboard')}}" class="menu-link">
-              <div class="text-truncate" data-i18n="Overview">OverView</div>
+            <a href="{{route('')}}" class="menu-link">
+              <div class="text-truncate" data-i18n="HPT">HPT</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{route('maps')}}" class="menu-link">
-              <div class="text-truncate" data-i18n="Maps">Maps</div>
+            <a href="{{route('')}}" class="menu-link">
+              <div class="text-truncate" data-i18n="Growth">Growth</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{route('user')}}" class="menu-link">
-              <div class="text-truncate" data-i18n="User">User</div>
+            <a href="{{route('')}}" class="menu-link">
+              <div class="text-truncate" data-i18n="Tool">Tool</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{route('user.add')}}" class="menu-link">
-              <div class="text-truncate" data-i18n="Add-User">Add-User</div>
+            <a href="{{route('')}}" class="menu-link">
+              <div class="text-truncate" data-i18n="Weather">Weather</div>
             </a>
           </li>
         </ul>
       </li>
+
+      
       <!-- Misc -->
-      <li class="menu-header small text-uppercase"><span class="menu-header-text" data-i18n="Misc">Misc</span></li>
+      <li class="menu-header small text-uppercase"><span class="menu-header-text" data-i18n="Administrator">Administrator</span></li>
+      
+      <li class="menu-item {{ $page == 'User' ? 'active' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-slider-alt"></i>
+          <div class="text-truncate" data-i18n="Setting">Setting</div>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{route('user')}}" class="menu-link">
+              <div class="text-truncate" data-i18n="List Users">List Users</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{route('user.add')}}" class="menu-link">
+              <div class="text-truncate" data-i18n="Add User">Add User</div>
+            </a>
+          </li>
+        </ul>
+      </li>
     </ul>
-    
-    
-  
   </aside>
   <!-- / Menu -->

@@ -1,5 +1,12 @@
-@extends('layouts.user')
+@push('head')
+  <link rel="stylesheet" href="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.css')}}" />
+  <link rel="stylesheet" href="{{asset('/vendor/libs/@form-validation/form-validation.css')}}" />
+@endpush
+@extends('layouts.main')
 @section('content')
+        <h4 class="py-3 mb-4">
+          <span class="text-muted fw-light">{{$title}}/{{$page}}/</span> {{$subpage}}
+        </h4>
           <!-- Default -->
           <div class="row">
             <!-- Validation Wizard -->
@@ -47,4 +54,9 @@
             <!-- /Validation Wizard -->
 
           </div>
+          <script src="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.js')}}"></script>
+          <script src="{{asset('/vendor/libs/@form-validation/popular.js')}}"></script>
+          <script src="{{asset('/vendor/libs/@form-validation/bootstrap5.js')}}"></script>
+          <script src="{{asset('/vendor/libs/@form-validation/auto-focus.js')}}"></script>
+          <script src="{{asset('/js/form-validation.js')}}"></script>
 @endsection

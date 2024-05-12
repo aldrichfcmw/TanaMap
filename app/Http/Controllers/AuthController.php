@@ -56,7 +56,7 @@ class AuthController extends Controller
                     return redirect()->route('tani.dash')->with('success','SignIn Berhasil');
                     break;
                 case 'farmer_hpt':
-                    return redirect()->route('tani.hpt')->with('success','SignIn Berhasil');
+                    return redirect()->route('tani.disease')->with('success','SignIn Berhasil');
                     break;
                 case 'farmer_growth':
                     return redirect()->route('tani.growth')->with('success','SignIn Berhasil');

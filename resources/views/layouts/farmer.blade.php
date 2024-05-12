@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" class="light-style layout-navbar-fixed layout-wide customizer-hide layout-menu-100vh layout-menu-collapsed" dir="ltr" data-theme="theme-default" data-assets-path="/" data-template="vertical-menu-template-light">
-
-<head>
+<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="/" data-template="vertical-menu-template-light">
+  <head>
     @include('layouts.head')
     <link rel="stylesheet" href="{{asset('/vendor/libs/leaflet/leaflet.css')}}" />
     <style>
@@ -10,22 +9,20 @@
             height: 100%;
           }
         }
-      </style>
-</head>
-<body>
-    <!-- Layout wrapper -->
+    </style>
+  </head>
+  <body>
     <div class="layout-wrapper layout-content-navbar  ">
         <div class="layout-container">
-            @include('layouts-farmer.menu')
             <!-- Layout container -->
             <div class="layout-page">
-                @include('layouts-farmer.navbar')
+                <div class="mt-3">
+                    @include('layouts.navbar')
+                </div>
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->
-                    <div class="container-xxl flex-grow-1 container-p-y">
-                        @yield('content')
-                    </div>
+                    @yield('content')
                     <!-- / Content -->
                     @include('layouts.footer')
                     <div class="content-backdrop fade"></div>
@@ -36,15 +33,8 @@
         </div>
     </div>
     <!-- / Layout wrapper -->
-
-    <!-- Vendors JS -->
-    <script src="{{asset('/vendor/libs/leaflet/leaflet.js')}}"></script>
     @include('layouts.foot')
-  
-    <!-- Page JS -->
+    @include('layouts.toast')
+    <script src="{{asset('/vendor/libs/leaflet/leaflet.js')}}"></script>
     <script src="{{asset('/js/maps-leaflet.js')}}"></script>
-       
-</body>
-
-</html>
-
+  </body>

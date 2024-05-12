@@ -26,14 +26,16 @@ class DashboardController extends Controller
     public function user(){
         $title  = 'Dashboard';
         $page   = 'User';
+        $subpage= 'List User';
         $data   =  User::get();
-        return view('dashboard.user',compact('title','page','data'));
+        return view('dashboard.user',compact('title','page','subpage','data'));
     }
     
     public function userAdd(){
         $title  = 'Dashboard';
-        $page   = 'Add User';
-        return view('dashboard.user-add',compact('title','page'));
+        $page   = 'User';
+        $subpage= 'Add User';
+        return view('dashboard.user-add',compact('title','page','subpage'));
     }
 
     public function storeUser(Request $request){

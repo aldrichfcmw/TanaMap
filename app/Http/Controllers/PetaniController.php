@@ -13,16 +13,16 @@ class PetaniController extends Controller
         return view('farmer.index',compact('title','page'));
     }
 
-    public function maps(){
-        $title  = 'Maps';
+    public function disease(){
+        $title  = 'Dashboard';
         $page   = 'HPT';
-        return view('farmer.maps',compact('title','page'));
+        return view('farmer.disease',compact('title','page'));
     }
 
     public function tool(){
         $title  = 'Dashboard';
         $page   = 'Tool';
-        return view('maps.index',compact('title','page'));
+        return view('farmer.tool',compact('title','page'));
     }
 
     public function growth(){

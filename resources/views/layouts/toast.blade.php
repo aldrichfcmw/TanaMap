@@ -1,7 +1,9 @@
-<link rel="stylesheet" href="{{asset('/vendor/libs/sweetalert2/sweetalert2.css')}}" />
+@push('head')
+  <link rel="stylesheet" href="{{asset('/vendor/libs/sweetalert2/sweetalert2.css')}}" />
+@endpush
 <script src="{{asset('/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
 @if($message = Session::get('success'))
-<script>
+  <script>
     Swal.fire({
                 icon: 'success', // Tipe ikon (success, error, warning, info)
                 text: '{{ $message }}', // Pesan toast
@@ -16,11 +18,11 @@
                 toast.onmouseleave = Swal.resumeTimer;
                 }
             });
-    </script>
-    @endif
-    @if($message = Session::get('error'))
-    <script>
-      Swal.fire({
+  </script>
+@endif
+@if($message = Session::get('error'))
+  <script>
+    Swal.fire({
                 icon: 'error', // Tipe ikon (success, error, warning, info)
                 text: '{{ $message }}', // Pesan toast
                 toast: true, // Tentukan bahwa ini adalah toast
@@ -33,6 +35,6 @@
                   toast.onmouseenter = Swal.stopTimer;
                   toast.onmouseleave = Swal.resumeTimer;
                 }
-            });
-    </script>
+              });
+  </script>
 @endif

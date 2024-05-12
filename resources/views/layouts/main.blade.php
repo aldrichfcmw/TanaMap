@@ -3,10 +3,8 @@
 
 <head>
     @include('layouts.head')
-    <link rel="stylesheet" href="{{asset('/vendor/libs/apex-charts/apex-charts.css')}}" />
-    <link rel="stylesheet" href="{{asset('/vendor/libs/bs-stepper/bs-stepper.css')}}" />
-    <link rel="stylesheet" href="{{asset('/vendor/libs/animate-css/animate.css')}}" />
-    <link rel="stylesheet" href="{{asset('/vendor/libs/sweetalert2/sweetalert2.css')}}" />
+    {{-- <link rel="stylesheet" href="{{asset('/vendor/libs/apex-charts/apex-charts.css')}}" /> --}}
+    {{-- <link rel="stylesheet" href="{{asset('/vendor/libs/bs-stepper/bs-stepper.css')}}" /> --}}
 </head>
 <body>
     <!-- Layout wrapper -->
@@ -20,9 +18,9 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="py-3 mb-4">
+                        {{-- <h4 class="py-3 mb-4">
                             <span class="text-muted fw-light">{{$title}}/</span> {{$page}}
-                        </h4>
+                        </h4> --}}
                         @yield('content')
                     </div>
                     <!-- / Content -->
@@ -41,51 +39,15 @@
     <!-- / Layout wrapper -->
 
     <!-- Vendors JS -->
-    <script src="{{asset('/vendor/libs/apex-charts/apexcharts.js')}}"></script>
-    <script src="{{asset('/vendor/libs/bs-stepper/bs-stepper.js')}}"></script>
-    <script src="{{asset('/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
+    {{-- <script src="{{asset('/vendor/libs/apex-charts/apexcharts.js')}}"></script>
+    <script src="{{asset('/vendor/libs/bs-stepper/bs-stepper.js')}}"></script> --}}
 
     @include('layouts.foot')
   
     <!-- Page JS -->
     <script src="{{asset('/js/dashboards-crm.js')}}"></script>
     
-    @if($message = Session::get('success'))
-    <script>
-    Swal.fire({
-                icon: 'success', // Tipe ikon (success, error, warning, info)
-                text: '{{ $message }}', // Pesan toast
-                toast: true, // Tentukan bahwa ini adalah toast
-                position: 'bottom-end', // Posisi toast (top-start, top-end, bottom-start, bottom-end)
-                showConfirmButton: false, // Tampilkan tombol OK
-                background:"#fff",
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-    </script>
-    @endif
-    @if($message = Session::get('error'))
-    <script>
-      Swal.fire({
-                icon: 'error', // Tipe ikon (success, error, warning, info)
-                text: '{{ $message }}', // Pesan toast
-                toast: true, // Tentukan bahwa ini adalah toast
-                position: 'bottom-end', // Posisi toast (top-start, top-end, bottom-start, bottom-end)
-                showConfirmButton: false, // Tampilkan tombol OK
-                background:"#fff",
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.onmouseenter = Swal.stopTimer;
-                  toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-    </script>
-    @endif    
+    @include('layouts.toast') 
 </body>
 
 </html>
