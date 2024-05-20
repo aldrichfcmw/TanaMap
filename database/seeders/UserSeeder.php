@@ -16,27 +16,27 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Permission::updateOrCreate(['name' => 'admin'],['name' => 'admin']);
-        // $role1 = Role::updateOrCreate(['name' => 'admin'],['name' => 'admin']);
-        // $role1 ->givePermissionTo('admin');
-        // $user = User::create([
-        //     'name'      => 'admin',
-        //     'username'  => 'admin',
-        //     'email'     => 'admin@gmail.com',
-        //     'password'  => Hash::make('admin123'),
-        // ]);
-        // $user -> assignRole($role1);
+        Permission::updateOrCreate(['name' => 'admin'],['name' => 'admin']);
+        $role1 = Role::updateOrCreate(['name' => 'admin'],['name' => 'admin']);
+        $role1 ->givePermissionTo('admin');
+        $user = User::create([
+            'name'      => 'admin',
+            'username'  => 'admin',
+            'email'     => 'admin@gmail.com',
+            'password'  => Hash::make('admin123'),
+        ]);
+        $user -> assignRole($role1);
         
-        // Permission::updateOrCreate(['name' => 'guest'],['name' => 'guest']);
-        // $role2 = Role::updateOrCreate(['name' => 'guest'],['name' => 'guest']);
-        // $role2 ->givePermissionTo('farmer');
-        // $user = User::create([
-        //     'name'      => 'farmer',
-        //     'username'  => 'farmer',
-        //     'email'     => 'farmer@gmail.com',
-        //     'password'  => Hash::make('farmer123'),
-        // ]);
-        // $user -> assignRole($role2);
+        Permission::updateOrCreate(['name' => 'guest'],['name' => 'guest']);
+        $role2 = Role::updateOrCreate(['name' => 'guest'],['name' => 'guest']);
+        $role2 -> givePermissionTo('guest');
+        $user2 = User::create([
+            'name'      => 'farmer',
+            'username'  => 'farmer',
+            'email'     => 'farmer@gmail.com',
+            'password'  => Hash::make('farmer123'),
+        ]);
+        $user2 -> assignRole($role2);
 
         // Permission::updateOrCreate(['name' => 'view weather'],['name' => 'view weather']);
         // $role3 = Role::updateOrCreate(['name' => 'farmer weather'],['name' => 'farmer weather']);

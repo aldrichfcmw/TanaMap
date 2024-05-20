@@ -1,6 +1,6 @@
 @push('head')
-<link rel="stylesheet" href="{{asset('/vendor/libs/datatables-bs5/datatables.bootstrap5')}}">
-<link rel="stylesheet" href="{{asset('/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5')}}">
+{{-- <link rel="stylesheet" href="{{asset('/vendor/libs/datatables-bs5/datatables.bootstrap5')}}">
+<link rel="stylesheet" href="{{asset('/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5')}}"> --}}
 {{-- <link rel="stylesheet" href="{{assets('/vendor/libs/datatables-select-bs5/select.bootstrap5')}}">
 <link rel="stylesheet" href="{{assets('/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes')}}">
 <link rel="stylesheet" href="{{assets('/vendor/libs/datatables-fixedcolumns-bs5/fixedcolumns.bootstrap5')}}">
@@ -47,6 +47,6 @@
           </div>
     </div>
 </div>   
-<script src="{{asset('/vendor/libs/datatables-bs5/datatables-bootstrap5.js')}}"></script>
-<script src="{{asset('/js/tables-datatables-extensions.js')}}"></script>
+{{-- <script src="{{asset('/vendor/libs/datatables-bs5/datatables-bootstrap5.js')}}"></script>
+<script src="{{asset('/js/tables-datatables-extensions.js')}}"></script> --}}
 @endsection

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('/disease-data', [DataPostController::class, 'storeDisease']);
+Route::post('/growth-data', [DataPostController::class, 'storeGrowth']);
+Route::post('/tool-data', [DataPostController::class, 'storeTool']);
+Route::post('/weather-data', [DataPostController::class, 'storeWeather']);
+
