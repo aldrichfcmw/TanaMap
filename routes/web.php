@@ -25,7 +25,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 // });
 
 Route::get('/',[HomeController::class,'index']) -> name('home');
-Route::get('/coba',[HomeController::class,'coba']) -> name('coba');
 
 Route::get('/signin',[AuthController::class,'signin']) -> name('signin');
 Route::post('/signin/auth',[AuthController::class,'signinAuth']) -> name('auth.signin');

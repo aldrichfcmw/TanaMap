@@ -4,53 +4,53 @@ namespace App\Http\Controllers;
 
 use App\Models\Disease;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth;
 
 class DataPostController extends Controller
 {
-    //
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api');
+    // }
 
     public function storeDisease(Request $request)
     {
-        // Validasi request
-        $request->validate([
-            'disease_id' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,JPG,PNG|max:2048', // sesuaikan dengan kebutuhan Anda
-        ]);
+        // $request->validate([
+        //     'disease_id' => 'required',
+        //     'latitude' => 'required',
+        //     'longitude' => 'required',
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,JPG,PNG|max:2048',
+        // ]);
 
-        // Mengambil lokasi dari request
-        $latitude = $request->latitude;
-        $longitude = $request->longitude;
+        // // Mengambil lokasi dari request
+        // $latitude = $request->latitude;
+        // $longitude = $request->longitude;
 
-        // Menentukan disease_id berdasarkan lokasi
-        $disease_id = $request->disease_id;
-        if ($this->isInGresik($latitude, $longitude)) {
-            $disease_id = 'GSK'; // Gresik
-        } elseif ($this->isInSidoarjo($latitude, $longitude)) {
-            $disease_id = 'SDA'; // Sidoarjo
-        }
+        // // Menentukan disease_id berdasarkan lokasi
+        // $disease_id = $request->disease_id;
+        // if ($this->isInGresik($latitude, $longitude)) {
+        //     $disease_id = 'GSK'; // Gresik
+        // } elseif ($this->isInSidoarjo($latitude, $longitude)) {
+        //     $disease_id = 'SDA'; // Sidoarjo
+        // }
 
-        // Menyimpan data
-        $diseaseData = new Disease;
-        $diseaseData->disease_id = $disease_id;
-        $diseaseData->latitude = $latitude;
-        $diseaseData->longitude = $longitude;
+        // // Menyimpan data
+        // $diseaseData = new Disease;
+        // $diseaseData->disease_id = $disease_id;
+        // $diseaseData->latitude = $latitude;
+        // $diseaseData->longitude = $longitude;
 
-        // Simpan gambar
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-            $diseaseData->image = $imageName;
-        }
+        // // Simpan gambar
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
+        //     $image->move(public_path('images'), $imageName);
+        //     $diseaseData->image = $imageName;
+        // }
 
-        $diseaseData->save();
+        // $diseaseData->save();
+        
 
         return response()->json(['message' => 'Data berhasil disimpan'], 200);
     }
@@ -94,4 +94,25 @@ class DataPostController extends Controller
 
         return false;
     }
+
+    private function isInYogyakarta($latitude, $longitude)
+    {
+        // Batas koordinat Yogyakarta
+        $yogyakartaBoundaries = [
+            'min_lat' => -7.952,
+            'max_lat' => -7.725,
+            'min_lng' => 110.212,
+            'max_lng' => 110.530,
+        ];
+
+        // Periksa apakah koordinat berada di dalam batas Yogyakarta
+        if ($latitude >= $yogyakartaBoundaries['min_lat'] && $latitude <= $yogyakartaBoundaries['max_lat'] &&
+            $longitude >= $yogyakartaBoundaries['min_lng'] && $longitude <= $yogyakartaBoundaries['max_lng']) {
+            return true;
+        }
+
+        return false;
+    }
+
+
 }

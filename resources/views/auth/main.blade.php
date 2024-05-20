@@ -13,6 +13,7 @@
     <!-- Page CSS -->
     <!-- Page -->
     <link rel="stylesheet" href="{{asset('vendor/css/pages/page-auth.css')}}">
+    {{-- @yield('head') --}}
 </head>
 <body>
   
@@ -46,6 +47,7 @@
     <!-- endbuild -->
   
     <!-- Vendors JS -->
+    @include('layouts.toast') 
     <script src="{{asset('vendor/libs/@form-validation/popular.js')}}"></script>
     <script src="{{asset('vendor/libs/@form-validation/bootstrap5.js')}}"></script>
     <script src="{{asset('vendor/libs/@form-validation/auto-focus.js')}}"></script>
@@ -53,7 +55,7 @@
   
     <!-- Page JS -->
     <script src="{{asset('js/pages-auth.js')}}"></script>
-    @include('layouts.toast')    
+       
   </body>
   
   </html>

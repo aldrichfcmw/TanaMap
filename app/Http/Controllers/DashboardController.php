@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Disease;
 
 
 class DashboardController extends Controller
@@ -23,7 +24,8 @@ class DashboardController extends Controller
     public function hpt(){
         $title  = 'Farmer';
         $page   = 'HPT';
-        return view('admin.hpt',compact('title','page'));
+        $data   =  Disease::get();
+        return view('admin.hpt',compact('title','page','data'));
     }
 
     public function growth(){

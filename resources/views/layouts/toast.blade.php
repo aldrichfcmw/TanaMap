@@ -1,7 +1,4 @@
-@push('head')
-  <link rel="stylesheet" href="{{asset('/vendor/libs/sweetalert2/sweetalert2.css')}}" />
-@endpush
-<script src="{{asset('/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if($message = Session::get('success'))
   <script>
     Swal.fire({

@@ -55,6 +55,11 @@
               <div class="text-truncate" data-i18n="Weather">Weather</div>
             </a>
           </li>
+          <li class="menu-item">
+            <a href="{{route('weather')}}" class="menu-link">
+              <div class="text-truncate" data-i18n="Orthomosaic">Orthomosaic</div>
+            </a>
+          </li>
         </ul>
       </li>
 

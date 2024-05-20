@@ -3,6 +3,7 @@
 
 <head>
     @include('layouts.head')
+    @yield('head')
     {{-- <link rel="stylesheet" href="{{asset('/vendor/libs/apex-charts/apex-charts.css')}}" /> --}}
     {{-- <link rel="stylesheet" href="{{asset('/vendor/libs/bs-stepper/bs-stepper.css')}}" /> --}}
 </head>

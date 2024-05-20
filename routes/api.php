@@ -18,9 +18,11 @@ use App\Http\Controllers\DataPostController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
+Route::get('/data', function () {
+    return response()->json([], 200);
+});
 Route::post('/disease-data', [DataPostController::class, 'storeDisease']);
-Route::post('/growth-data', [DataPostController::class, 'storeGrowth']);
-Route::post('/tool-data', [DataPostController::class, 'storeTool']);
-Route::post('/weather-data', [DataPostController::class, 'storeWeather']);
+// Route::post('/growth-data', [DataPostController::class, 'storeGrowth']);
+// Route::post('/tool-data', [DataPostController::class, 'storeTool']);
+// Route::post('/weather-data', [DataPostController::class, 'storeWeather']);
 
