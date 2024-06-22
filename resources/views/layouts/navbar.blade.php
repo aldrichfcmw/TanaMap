@@ -1,5 +1,5 @@
 <!-- Navbar -->
-  <nav class="layout-navbar {{ request()->is('petani/*') ? 'container-fluid' : 'container-xxl' }} navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+  <nav class="layout-navbar {{ request()->is('farmer/*') ? 'container-fluid' : 'container-xxl' }} navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
     @can('admin')
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
       <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -7,7 +7,7 @@
       </a>
     </div>
     @endcan
-    @can('guest')
+    @can('guest|farmer')
     <div class="app-brand demo ">
       <a href="{{url('/')}}" class="app-brand-link">
         <span class="app-brand-logo" style="">
