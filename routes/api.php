@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DataPostController;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +18,11 @@ use App\Http\Controllers\DataPostController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::get('/data', function () {
-    return response()->json([], 200);
-});
-Route::post('/disease-data', [DataPostController::class, 'storeDisease']);
-// Route::post('/growth-data', [DataPostController::class, 'storeGrowth']);
-// Route::post('/tool-data', [DataPostController::class, 'storeTool']);
-// Route::post('/weather-data', [DataPostController::class, 'storeWeather']);
-
+// Route::get('/data', function () {
+//     return response()->json([''], 200);
+// });
+Route::middleware('auth:sanctum')->post('/store-data', [ApiController::class, 'storeData']);
+Route::middleware(['auth:sanctum', 'role:admin|farmer hpt'])->post('/disease-data', [ApiController::class, 'storeDisease']);
+Route::middleware(['auth:sanctum', 'role:admin|farmer growth'])->post('/growth-data', [ApiController::class, 'storeGrowth']);
+Route::middleware(['auth:sanctum', 'role:admin|farmer tool'])->post('/tool-data', [ApiController::class, 'storeTool']);
+Route::middleware(['auth:sanctum', 'role:admin|farmer weather'])->post('/weather-data', [ApiController::class, 'storeWeather']);
