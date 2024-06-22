@@ -3,37 +3,52 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Disease;
+use App\Models\Growth;
+use App\Models\Tool;
+use App\Models\Weather;
 
 class PetaniController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         $title  = 'Dashboard';
         $page   = 'Overview';
-        return view('farmer.index',compact('title','page'));
+        return view('farmer.index', compact('title', 'page'));
     }
 
-    public function disease(){
+    public function disease()
+    {
         $title  = 'Dashboard';
         $page   = 'HPT';
-        return view('farmer.disease',compact('title','page'));
+        $data   = Disease::get();
+        $avgLat = $data->avg('latitude');
+        $avgLong = $data->avg('longitude');
+        return view('farmer.disease', compact('title', 'page', 'data', 'avgLat', 'avgLong'));
     }
 
-    public function tool(){
+    public function tool()
+    {
         $title  = 'Dashboard';
         $page   = 'Tool';
-        return view('farmer.tool',compact('title','page'));
+        $data   = Disease::limit(5)->get();
+        $avgLat = $data->avg('latitude');
+        $avgLong = $data->avg('longitude');
+        return view('farmer.tool', compact('title', 'page', 'data', 'avgLat', 'avgLong'));
     }
 
-    public function growth(){
+    public function growth()
+    {
         $title  = 'Dashboard';
         $page   = 'Growth';
-        return view('farmer.growth',compact('title','page'));
+        return view('farmer.growth', compact('title', 'page'));
     }
 
-    public function weather(){
+    public function weather()
+    {
         $title  = 'Dashboard';
         $page   = 'Weather';
-        return view('farmer.weather',compact('title','page'));
+        return view('farmer.weather', compact('title', 'page'));
     }
 }
