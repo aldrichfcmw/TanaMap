@@ -14,11 +14,14 @@ class DiseaseSeeder extends Seeder
     {
         //
         Disease::create([
-            'disease_id'=> 'GSK-001',
+            'disease_name' => 'GSK-001',
             'latitude'  => '-7.273288',
             'longitude' => '112.578240',
-            'image'     => '2024-05-20-DJI_0084.JPG',
+            'healthy_area' => '342614',
+            'total_area' => '984828',
+            'healthy_percentage' => '34.78922207735767',
+            'health_status' => '1',
+            'crop_image' => '',
         ]);
-        
     }
 }
