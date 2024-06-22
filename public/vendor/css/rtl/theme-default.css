@@ -1803,7 +1803,7 @@ html:not(.layout-menu-collapsed)
     .menu-sub
     > .menu-item.active
     > .menu-link:not(.menu-toggle):before {
-    background-color: #696cff !important;
+    background-color: #66bb6a !important;
     border: 3px solid #e7e7ff !important;
 }
 .app-brand .layout-menu-toggle {
