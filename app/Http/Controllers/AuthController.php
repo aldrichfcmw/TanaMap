@@ -13,22 +13,26 @@ use Spatie\Permission\Models\Role;
 class AuthController extends Controller
 {
     //
-    public function signin(){
+    public function signin()
+    {
         $title = 'Sign';
         $page   = 'In';
-        return view('auth.signin',compact('title','page'));
+        return view('auth.signin', compact('title', 'page'));
     }
-    public function signup(){
+    public function signup()
+    {
         $title = 'Sign';
         $page   = 'Up';
-        return view('auth.signup',compact('title','page'));
+        return view('auth.signup', compact('title', 'page'));
     }
-    public function signout(){
+    public function signout()
+    {
         Auth::logout();
-        return redirect()->route('signin')->with('success','SignOut Berhasil');
+        return redirect()->route('signin')->with('success', 'SignOut Berhasil');
     }
 
-    public function signinAuth(Request $request){
+    public function signinAuth(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'email'     => 'required|email',
             'password'  => 'required|min:6',
@@ -40,39 +44,37 @@ class AuthController extends Controller
         }
 
         $data = [
-            'email'     => $request -> email,
-            'password'  => $request -> password,
+            'email'     => $request->email,
+            'password'  => $request->password,
         ];
 
-        if(Auth::attempt($data)){
+        if (Auth::attempt($data)) {
             // dd($data);
             $user = Auth::user();
             $role = $user->roles->first()->name;
             // dd($role);
             switch ($role) {
                 case 'admin':
-                    return redirect()->route('dashboard')->with('success','SignIn Berhasil');
+                    return redirect()->route('dashboard')->with('success', 'SignIn Berhasil');
                     break;
                 case 'guest':
-                    return redirect()->route('tani.dash')->with('success','SignIn Berhasil');
+                    return redirect()->route('tani.dash')->with('success', 'SignIn Berhasil');
                     break;
                 case 'farmer_hpt':
-                    return redirect()->route('tani.disease')->with('success','SignIn Berhasil');
+                    return redirect()->route('tani.disease')->with('success', 'SignIn Berhasil');
                     break;
                 case 'farmer_growth':
-                    return redirect()->route('tani.growth')->with('success','SignIn Berhasil');
+                    return redirect()->route('tani.growth')->with('success', 'SignIn Berhasil');
                     break;
                 case 'farmer_tool':
-                    return redirect()->route('tani.tool')->with('success','SignIn Berhasil');
+                    return redirect()->route('tani.tool')->with('success', 'SignIn Berhasil');
                     break;
                 case 'farmer_weather':
-                    return redirect()->route('tani.weather')->with('success','SignIn Berhasil');
-                    break;   
+                    return redirect()->route('tani.weather')->with('success', 'SignIn Berhasil');
+                    break;
             }
-            
-        }
-        else{
-            return redirect()->route('signin')->with('error','Email atau Password Salah');
+        } else {
+            return redirect()->route('signin')->with('error', 'Email atau Password Salah');
         }
         // if(Auth::attempt($data)){
         //     return redirect()->route('dashboard')->with('success','SignIn Berhasil');
@@ -81,9 +83,10 @@ class AuthController extends Controller
         // };
     }
 
-    public function storeUser(Request $request){
+    public function storeUser(Request $request)
+    {
         // dd($request->all());
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'name'      => 'required|max:255|min:3',
             'username'  => 'required|unique:users,username|max:255',
             'email'     => 'required|email|unique:users,email',
@@ -95,16 +98,16 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $data =[
+        $data = [
             'name'     => $request->name,
             'username'  => $request->username,
             'email'     => $request->email,
             'password'  => Hash::make($request->password),
         ];
-        
+
         $user = User::create($data);
         $role = Role::where('name', 'guest')->first();
         $user->assignRole($role);
-        return redirect()->route('signin')->with('success','Akun berhasil dibuat');
+        return redirect()->route('signin')->with('success', 'Akun berhasil dibuat');
     }
 }
