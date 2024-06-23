@@ -36,7 +36,8 @@ class DashboardController extends Controller
         $title  = 'Farmer';
         $page   = 'Growth';
         $subpage = '';
-        return view('admin.growth', compact('title', 'page', 'subpage'));
+        $data   =  Growth::get();
+        return view('admin.growth', compact('title', 'page', 'subpage', 'data'));
     }
 
     public function tool()
@@ -52,7 +53,8 @@ class DashboardController extends Controller
         $title  = 'Farmer';
         $page   = 'Weather';
         $subpage = '';
-        return view('admin.weather', compact('title', 'page', 'subpage'));
+        $data   =  Weather::get();
+        return view('admin.weather', compact('title', 'page', 'subpage', 'data'));
     }
 
     public function dataEdit($type, $uname)
@@ -123,6 +125,22 @@ class DashboardController extends Controller
                 Storage::disk('public')->delete('images/disease/' . $data->image);
             }
             return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil diubah');
+        }
+        if ($type == 'growth') {
+            $data = growth::whereGrowth_name($uname);
+            if (!$data) {
+                return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal dihapus');
+            }
+            $data->delete();
+            return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil dihapus');
+        }
+        if ($type == 'weather') {
+            $data = weather::whereWeather_name($uname);
+            if (!$data) {
+                return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal dihapus');
+            }
+            $data->delete();
+            return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil dihapus');
         }
     }
 }
