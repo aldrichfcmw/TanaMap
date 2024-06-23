@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Disease;
+use App\Models\Weather;
+use App\Models\Growth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Http;
@@ -17,6 +19,26 @@ class ApiController extends Controller
     // {
     //     $this->middleware('auth:api');
     // }
+
+    public function storeData(Request $request)
+    {
+        // $validator = Validator::make($request->all(), [
+        //     'key1' => 'required|string',
+        //     'key2' => 'required|string',
+        //     // Tambahkan aturan validasi sesuai kebutuhan Anda
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return response()->json(['errors' => $validator->errors()], 422);
+        // }
+
+        // $data = [
+        //     'key1'     => $request->key1,
+        //     'key2'  => $request->key2,
+        // ];
+
+        return response()->json(['message' => 'Data stored successfully']);
+    }
 
     public function storeDisease(Request $request)
     {
@@ -73,38 +95,74 @@ class ApiController extends Controller
         Disease::create($data);
 
         return response()->json(['message' => 'Data berhasil disimpan'], 200);
-
-
-        // // Simpan gambar
-        // if ($request->hasFile('image')) {
-        //     $image = $request->file('image');
-        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
-        //     $image->move(public_path('images'), $imageName);
-        //     $diseaseData->image = $imageName;
-        // }
-
-        // return response()->json(['message' => 'Data berhasil disimpan'], 200);
     }
 
-    public function storeData(Request $request)
+    public function storeWeather(Request $request)
     {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
-            'key1' => 'required|string',
-            'key2' => 'required|string',
-            // Tambahkan aturan validasi sesuai kebutuhan Anda
+            'type' => 'required|string|max:8',
+            'time' => 'required',
+            'description' => 'required|string'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+        $name_prefix = "Data";
+        $weather_name = Weather::generateName($name_prefix);
+
+        $data = [
+            'weather_name' => $weather_name,
+            'type' =>  $request->type,
+            'time' => $request->time,
+            'description' =>  $request->description,
+        ];
+        Weather::create($data);
+
+        return response()->json(['message' => 'Data berhasil disimpan'], 200);
+    }
+
+    public function storeGrowth(Request $request)
+    {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'color' => 'required|string|max:10',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $data = [
-            'key1'     => $request->key1,
-            'key2'  => $request->key2,
-        ];
+        $latitude = $request->latitude;
+        $longitude = $request->longitude;
 
-        return response()->json(['message' => 'Data stored successfully']);
+        if ($this->isInGresik($latitude, $longitude)) {
+            $name_prefix = 'GSK'; // Gresik
+        } elseif ($this->isInSidoarjo($latitude, $longitude)) {
+            $name_prefix = 'SDA'; // Sidoarjo
+        } elseif ($this->isInYogyakarta($latitude, $longitude)) {
+            $name_prefix = 'YK'; //Yogyakarta
+        } else {
+            return response()->json(['error' => 'Lokasi tidak valid'], 422);
+        }
+
+        $growth_name = Growth::generateName($name_prefix);
+
+
+        $data = [
+            'growth_name' => $growth_name,
+            'color' => $request->color,
+            'latitude' =>  $request->latitude,
+            'longitude' => $request->longitude,
+        ];
+        Growth::create($data);
+
+        return response()->json(['message' => 'Data berhasil disimpan'], 200);
     }
+
 
     private function isInGresik($latitude, $longitude)
     {
