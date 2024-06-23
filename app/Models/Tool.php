@@ -9,6 +9,8 @@ class Tool extends Model
 {
     use HasFactory;
 
+    protected $table = 'table_tool';
+
     protected $fillable = [
         'tool_name',
         'land_area',
