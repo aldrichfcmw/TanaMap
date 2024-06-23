@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('table_growth', function (Blueprint $table) {
             $table->id();
-            $table->string('growth_location');
+            $table->string('growth_name');
             $table->string('color');
             $table->decimal('latitude', 10, 7);
             $table->decimal('longitude', 10, 7);
-            $table->string('image');
             $table->timestamps();
         });
     }
