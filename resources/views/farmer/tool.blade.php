@@ -1,6 +1,6 @@
-@push('head')
+{{-- @push('head') --}}
 {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> --}}
-@endpush
+{{-- @endpush --}}
 @extends('layouts.farmer')
 @section('content')
 <div class="container-fluid flex-grow-1 container-p-y">
