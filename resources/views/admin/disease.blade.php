@@ -60,6 +60,7 @@
                               <form action="{{route('data.delete',['type'=>'disease','uname'=> $d->disease_name])}}" method="post">
                                 @csrf
                                 @method('DELETE')
+                                <input type="text" name="image" id="image" value="{{$d->image}}" hidden>
                                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-warning">Ya, Hapus</button>
                               </form>
