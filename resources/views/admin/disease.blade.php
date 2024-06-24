@@ -13,6 +13,7 @@
             <tr>
               <th>No.</th>
               <th>Location</th>
+              <th>Status</th>
               <th>Latitude</th>
               <th>Longitude</th>
               <th>Image</th>
@@ -24,6 +25,10 @@
                 <tr>
                   <td>{{ $key+1 }}</td>
                   <td>{{ $d -> disease_name }}</td>
+                  <td>{{ $d->health_status == '0' ? 'Sehat' : '' }}
+                      {{ $d->health_status == '1' ? 'Terindikasi Hama/Penyakit' : '' }}
+                      {{-- {{ $d->health_status == '2' ? 'Terindikasi Sakit' : '' }} --}}
+                  </td>  
                   <td>{{ $d -> latitude }}</td>
                   <td>{{ $d -> longitude }}</td>
                   <td>{{ $d -> image  }}</td>
