@@ -22,7 +22,7 @@ class PetaniController extends Controller
     {
         $title  = 'Dashboard';
         $page   = 'HPT';
-        $data   = Disease::get();
+        $data   = Disease::limit(5)->get();
         $avgLat = $data->avg('latitude');
         $avgLong = $data->avg('longitude');
         return view('farmer.disease', compact('title', 'page', 'data', 'avgLat', 'avgLong'));
@@ -32,7 +32,7 @@ class PetaniController extends Controller
     {
         $title  = 'Dashboard';
         $page   = 'Tool';
-        $data   = Disease::limit(5)->get();
+        $data   = Tool::get();
         $avgLat = $data->avg('latitude');
         $avgLong = $data->avg('longitude');
         return view('farmer.tool', compact('title', 'page', 'data', 'avgLat', 'avgLong'));

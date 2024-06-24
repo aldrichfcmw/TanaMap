@@ -45,7 +45,8 @@ class DashboardController extends Controller
         $title  = 'Farmer';
         $page   = 'Tool';
         $subpage = '';
-        return view('admin.tool', compact('title', 'page', 'subpage'));
+        $data = Tool::get();
+        return view('admin.tool', compact('title', 'page', 'subpage', 'data'));
     }
 
     public function weather()
@@ -113,7 +114,7 @@ class DashboardController extends Controller
         }
         // dd($request->all());
     }
-    public function dataDelete($type, $uname)
+    public function dataDelete($type, $uname, Request $request)
     {
         if ($type == 'disease') {
             $data = Disease::whereDisease_name($uname);
@@ -121,8 +122,20 @@ class DashboardController extends Controller
                 return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal diubah');
             }
             $data->delete();
-            if (Storage::disk('public')->exists('images/disease/' . $data->image)) {
-                Storage::disk('public')->delete('images/disease/' . $data->image);
+            if (Storage::disk('public')->exists('images/disease/' . $request->image)) {
+                Storage::disk('public')->delete('images/disease/' . $request->image);
+            }
+            return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil diubah');
+        }
+        if ($type == 'tool') {
+            $data = Tool::whereTool_name($uname);
+            // dd($request->all());
+            if (!$data) {
+                return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal diubah');
+            }
+            $data->delete();
+            if (Storage::disk('public')->exists('images/tool/' . $request->image)) {
+                Storage::disk('public')->delete('images/tool/' . $request->image);
             }
             return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil diubah');
         }

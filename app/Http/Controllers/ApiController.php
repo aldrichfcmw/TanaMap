@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Disease;
 use App\Models\Weather;
 use App\Models\Growth;
+use App\Models\Tool;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Http;
@@ -97,6 +98,56 @@ class ApiController extends Controller
         return response()->json(['message' => 'Data berhasil disimpan'], 200);
     }
 
+    public function storeTool(Request $request)
+    {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|file|mimes:jpg,jpeg,png',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'land_area' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $latitude = $request->latitude;
+        $longitude = $request->longitude;
+
+        if ($this->isInGresik($latitude, $longitude)) {
+            $name_prefix = 'GSK'; // Gresik
+        } elseif ($this->isInSidoarjo($latitude, $longitude)) {
+            $name_prefix = 'SDA'; // Sidoarjo
+        } elseif ($this->isInYogyakarta($latitude, $longitude)) {
+            $name_prefix = 'YK'; //Yogyakarta
+        } else {
+            return response()->json(['error' => 'Lokasi tidak valid'], 422);
+        }
+
+        $tool_name = Tool::generateName($name_prefix);
+
+        $currentDateTime = Carbon::now();
+        $timestamp = $currentDateTime->format('Y-m-d-His');
+
+        $file = $request->file('image');
+        $originalFilename = $file->getClientOriginalName();
+
+        $new_filename = $timestamp . '_' . $originalFilename;
+        $path = $file->storeAs('images/tool', $new_filename, 'public');
+
+        $data = [
+            'tool_name' => $tool_name,
+            'land_area' =>  $request->land_area,
+            'latitude' =>  $request->latitude,
+            'longitude' => $request->longitude,
+            'image' =>  $new_filename,
+        ];
+        Tool::create($data);
+
+        return response()->json(['message' => 'Data berhasil disimpan'], 200);
+    }
+
     public function storeWeather(Request $request)
     {
         // dd($request->all());
@@ -127,7 +178,7 @@ class ApiController extends Controller
     {
         // dd($request->all());
         $validator = Validator::make($request->all(), [
-            'color' => 'required|string|max:10',
+            'color' => 'required|string|max:7',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
         ]);
