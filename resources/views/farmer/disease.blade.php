@@ -58,10 +58,10 @@
 <script>
     var averageLat = {{ $avgLat }};
     var averageLong = {{ $avgLong }};
-    var map = L.map('map').setView([averageLat, averageLong], 20);
+    var map = L.map('map').setView([averageLat, averageLong], 10);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
+        maxZoom: 20,
     }).addTo(map);
 
     var locations = @json($data); // Pass PHP variable to JavaScript
