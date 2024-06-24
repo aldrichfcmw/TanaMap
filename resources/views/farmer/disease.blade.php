@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{assets('/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes')}}">
 <link rel="stylesheet" href="{{assets('/vendor/libs/datatables-fixedcolumns-bs5/fixedcolumns.bootstrap5')}}">
 <link rel="stylesheet" href="{{assets('/vendor/libs/datatables-fixedheader-bs5/fixedheader.bootstrap5')}}"> --}}
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+{{-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> --}}
 @endpush
 @extends('layouts.farmer')
 @section('content')
@@ -37,14 +37,6 @@
                                     </td>
                                 </tr>
                                 @endforeach  
-                            {{-- <tr>
-                                <td>GSK-001</td>
-                                <td>Gresik</td>
-                                <td>7 Hours Ago</td>
-                                <td class="text-center">
-                                    <a class="text-dark" href="javascript:void(0);"><i class="bx bx-link-external me-1"></i></a>                  
-                                </td>
-                            </tr> --}}
                             </tbody>
                         </table>
                     </div>
