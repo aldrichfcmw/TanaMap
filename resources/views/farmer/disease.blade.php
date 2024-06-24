@@ -61,7 +61,7 @@
     var map = L.map('map').setView([averageLat, averageLong], 10);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 20,
+        maxZoom: 19,
     }).addTo(map);
 
     var locations = @json($data); // Pass PHP variable to JavaScript

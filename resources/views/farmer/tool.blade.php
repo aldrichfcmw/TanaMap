@@ -1,6 +1,6 @@
-{{-- @push('head')
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-@endpush --}}
+@push('head')
+{{-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> --}}
+@endpush
 @extends('layouts.farmer')
 @section('content')
 <div class="container-fluid flex-grow-1 container-p-y">
@@ -141,7 +141,7 @@
   var map = L.map('map').setView([averageLat, averageLong], 10);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 20,
+      maxZoom: 19,
   }).addTo(map);
 
   var locations = @json($data); // Pass PHP variable to JavaScript
