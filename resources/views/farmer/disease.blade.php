@@ -60,9 +60,28 @@
     var averageLong = {{ $avgLong }};
     var map = L.map('map').setView([averageLat, averageLong], 10);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Layer jalan dari Google Maps
+    var roadmapLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
         maxZoom: 19,
-    }).addTo(map);
+    });
+
+    // Layer satelit dari Google Maps
+    var satelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        maxZoom: 19,
+    });
+
+    // Tambahkan layer jalan ke peta sebagai default
+    roadmapLayer.addTo(map);
+
+    // Tambahkan kontrol layer untuk beralih antara layer jalan dan satelit
+    var baseMaps = {
+        "Roadmap": roadmapLayer,
+        "Satellite": satelliteLayer
+    };
+
+    L.control.layers(baseMaps).addTo(map);
 
     var locations = @json($data); // Pass PHP variable to JavaScript
 
@@ -72,11 +91,11 @@
     function getCustomIcon(status, size = [30, 47]) {
         var iconUrl;
         if (status == 0) {
-            iconUrl = '{{asset("img/icons/marker/green-marker.png")}}';
+            iconUrl = '{{ asset("img/icons/marker/green-marker.png") }}';
         } else if (status == 1) {
-            iconUrl = '{{asset("/img/icons/marker/orange-marker.png")}}';
+            iconUrl = '{{ asset("img/icons/marker/orange-marker.png") }}';
         } else if (status == 2) {
-            iconUrl = '{{asset("/img/icons/marker/red-marker.png")}}';
+            iconUrl = '{{ asset("img/icons/marker/red-marker.png") }}';
         }
 
         return L.icon({
@@ -91,7 +110,7 @@
         var marker = L.marker([location.latitude, location.longitude], {icon: getCustomIcon(location.health_status), status: location.health_status}).addTo(map)
             .bindPopup('<b>' + location.disease_name + '</b><br>Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude);
         
-            markers.push({marker: marker, status: location.status});
+        markers.push({marker: marker, status: location.status});
 
         marker.on('click', function() {
             if (activeMarker) {
@@ -104,14 +123,14 @@
 
     document.querySelectorAll('.location-row').forEach(function(row) {
         row.addEventListener('click', function() {
-            var lat = this.dataset.lat;
-            var long = this.dataset.long;
+            var lat = parseFloat(this.dataset.lat);
+            var long = parseFloat(this.dataset.long);
             var status = this.dataset.status;
 
             map.setView([lat, long], 22); // Pan map to the clicked location
 
             var selectedMarker = markers.find(function(item) {
-                return item.marker.getLatLng().lat == lat && item.marker.getLatLng().lng == long;
+                return item.marker.getLatLng().lat === lat && item.marker.getLatLng().lng === long;
             });
 
             if (selectedMarker) {

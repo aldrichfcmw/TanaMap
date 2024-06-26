@@ -48,15 +48,35 @@
           </div>
     </div>
 </div>   
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> 
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+{{-- <script src="https://unpkg.com/leaflet.gridlayer.googlemutant/Leaflet.GoogleMutant.js"></script> --}}
 <script>
     var averageLat = {{ $avgLat }};
     var averageLong = {{ $avgLong }};
-    var map = L.map('map').setView([averageLat, averageLong], 10);
+    var map = L.map('map').setView([averageLat, averageLong], 14);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Layer jalan dari Google Maps
+    var roadmapLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
         maxZoom: 19,
-    }).addTo(map);
+    });
+
+    // Layer satelit dari Google Maps
+    var satelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        maxZoom: 19,
+    });
+
+    // Tambahkan layer jalan ke peta sebagai default
+    roadmapLayer.addTo(map);
+
+    // Tambahkan kontrol layer untuk beralih antara layer jalan dan satelit
+    var baseMaps = {
+        "Roadmap": roadmapLayer,
+        "Satellite": satelliteLayer
+    };
+
+    L.control.layers(baseMaps).addTo(map);
 
     var locations = @json($data); // Pass PHP variable to JavaScript
 
@@ -64,49 +84,49 @@
     var activeMarker = null;
 
     function getCustomIcon(size = [30, 47]) {
-      var iconUrl = '{{ asset("img/icons/marker/red-marker.png") }}';
+        var iconUrl = '{{ asset("img/icons/marker/red-marker.png") }}';
 
-      return L.icon({
-          iconUrl: iconUrl,
-          iconSize: size, // Size of the marker image
-          iconAnchor: [size[0] / 2, size[1]], // Anchor position of the marker
-          popupAnchor: [0, -size[1]] // Popup position above the marker
-      });
-  }
+        return L.icon({
+            iconUrl: iconUrl,
+            iconSize: size, // Size of the marker image
+            iconAnchor: [size[0] / 2, size[1]], // Anchor position of the marker
+            popupAnchor: [0, -size[1]] // Popup position above the marker
+        });
+    }
 
-  locations.forEach(function(location) {
-      var marker = L.marker([location.latitude, location.longitude], {icon: getCustomIcon()}).addTo(map)
-          .bindPopup('<b>' + location.growth_name + '</b><br>Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude);
-      
-      markers.push(marker);
+    locations.forEach(function(location) {
+        var marker = L.marker([location.latitude, location.longitude], {icon: getCustomIcon()}).addTo(map)
+            .bindPopup('<b>' + location.growth_name + '</b><br>Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude);
+        
+        markers.push(marker);
 
-      marker.on('click', function() {
-          if (activeMarker) {
-              activeMarker.setIcon(getCustomIcon());
-          }
-          this.setIcon(getCustomIcon([40, 63])); // Set to larger size when clicked
-          activeMarker = this;
-      });    
-  });
+        marker.on('click', function() {
+            if (activeMarker) {
+                activeMarker.setIcon(getCustomIcon());
+            }
+            this.setIcon(getCustomIcon([40, 63])); // Set to larger size when clicked
+            activeMarker = this;
+        });    
+    });
 
     document.querySelectorAll('.location-row').forEach(function(row) {
         row.addEventListener('click', function() {
-            var lat = this.dataset.lat;
-            var long = this.dataset.long;
+            var lat = parseFloat(this.dataset.lat);
+            var long = parseFloat(this.dataset.long);
             var status = this.dataset.status;
 
             map.setView([lat, long], 22); // Pan map to the clicked location
 
             var selectedMarker = markers.find(function(item) {
-                return item.marker.getLatLng().lat == lat && item.marker.getLatLng().lng == long;
+                return item.getLatLng().lat === lat && item.getLatLng().lng === long;
             });
 
             if (selectedMarker) {
                 if (activeMarker) {
-                    activeMarker.setIcon(getCustomIcon(activeMarker.options.status));
+                    activeMarker.setIcon(getCustomIcon());
                 }
-                selectedMarker.marker.setIcon(getCustomIcon(status, [40, 63])); // Set to larger size when clicked
-                activeMarker = selectedMarker.marker;
+                selectedMarker.setIcon(getCustomIcon([40, 63])); // Set to larger size when clicked
+                activeMarker = selectedMarker;
             }
         });
     });
