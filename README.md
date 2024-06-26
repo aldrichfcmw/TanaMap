@@ -67,4 +67,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ==================================================================
 
-link storage : ln -s tanamap/storage/app/public/ public/storage
+link storage : ln -s ~/htdocs/tanamap.drik.my.id/tanamap/storage/app/public ~/htdocs/tanamap.drik.my.id/public/storage
