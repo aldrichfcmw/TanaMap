@@ -42,7 +42,10 @@ class PetaniController extends Controller
     {
         $title  = 'Dashboard';
         $page   = 'Growth';
-        return view('farmer.growth', compact('title', 'page'));
+        $data   = Tool::get();
+        $avgLat = $data->avg('latitude');
+        $avgLong = $data->avg('longitude');
+        return view('farmer.growth', compact('title', 'page', 'data', 'avgLat', 'avgLong'));
     }
 
     public function weather()
