@@ -2,6 +2,7 @@
 <html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="/" data-template="vertical-menu-template-light">
   <head>
     @include('layouts.head')
+    @stack('head')
     <link rel="stylesheet" href="{{asset('/vendor/libs/leaflet/leaflet.css')}}" />
     <style>
         @media (min-width: 960px) {
