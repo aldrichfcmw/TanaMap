@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('table_weather_data', function (Blueprint $table) {
             $table->id();
+            $table->string('weather_name');
             $table->bigInteger('temp');
             $table->bigInteger('hum');
             $table->double('press');
@@ -20,6 +21,9 @@ return new class extends Migration
             $table->double('rainfall');
             $table->double('windspeed');
             $table->string('winddir');
+            $table->double('latitude');
+            $table->double('longitude');
+            $table->timestamp('time')->nullable();
             $table->timestamps();
         });
     }

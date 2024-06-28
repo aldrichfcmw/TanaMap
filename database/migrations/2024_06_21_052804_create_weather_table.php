@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('weather_name');
             $table->string('type');
-            $table->timestamp('time');
+            $table->timestamp('time')->nullable();
             $table->string('description');
             $table->timestamps();
         });
