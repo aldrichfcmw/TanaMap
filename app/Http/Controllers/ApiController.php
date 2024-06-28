@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Disease;
 use App\Models\Weather;
+use App\Models\WeatherData;
 use App\Models\Growth;
 use App\Models\Tool;
 use Carbon\Carbon;
@@ -148,7 +149,45 @@ class ApiController extends Controller
         return response()->json(['message' => 'Data berhasil disimpan'], 200);
     }
 
-    public function storeWeather(Request $request)
+    public function storeWeatherData(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'temp' => 'required|integer',
+            'hum' => 'required|integer',
+            'press' => 'required|numeric',
+            'uv' => 'required|integer',
+            'rainfall' => 'required|numeric',
+            'windspeed' => 'required|numeric',
+            'winddir' => 'required|string|max:3',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'timestamp' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+        $name_prefix = "Data";
+        $weather_name = WeatherData::generateName($name_prefix);
+
+        $data = [
+            'weather_name' => $weather_name,
+            'temp' =>  $request->temp,
+            'hum' =>  $request->hum,
+            'press' =>  $request->press,
+            'uv' =>  $request->uv,
+            'rainfall' =>  $request->rainfall,
+            'windspeed' =>  $request->windspeed,
+            'winddir' =>  $request->winddir,
+            'latitude' =>  $request->latitude,
+            'longitude' =>  $request->longitude,
+            'time' =>  $request->timestamp
+        ];
+        Weather::create($data);
+
+        return response()->json(['message' => 'Data berhasil disimpan'], 200);
+    }
+    public function storeWeatherPredict(Request $request)
     {
         // dd($request->all());
         $validator = Validator::make($request->all(), [
