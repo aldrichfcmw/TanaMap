@@ -50,10 +50,22 @@
               <div class="text-truncate" data-i18n="Tool">Tool</div>
             </a>
           </li>
-          <li class="menu-item {{ $page == 'Weather' ? 'active' : '' }}">
-            <a href="{{route('weather')}}" class="menu-link">
+          <li class="menu-item {{ $page == 'Weather' ? 'active open' : '' }}">
+            <a href="{{route('weather')}}" class="menu-link menu-toggle">
               <div class="text-truncate" data-i18n="Weather">Weather</div>
             </a>
+            <ul class="menu-sub">
+              <li class="menu-item {{ $subpage == 'Data' ? 'active' : '' }}">
+                <a href="{{route('weather.data')}}" class="menu-link">
+                  <div class="text-truncate" data-i18n="Data">Data</div>
+                </a>
+              </li>
+              <li class="menu-item {{ $subpage == 'Prediction' ? 'active' : '' }}">
+                <a href="{{route('weather.predict')}}" class="menu-link">
+                  <div class="text-truncate" data-i18n="Prediction">Prediction</div>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </li>
