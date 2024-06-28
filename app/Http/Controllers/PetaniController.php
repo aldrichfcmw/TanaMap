@@ -7,6 +7,7 @@ use App\Models\Disease;
 use App\Models\Growth;
 use App\Models\Tool;
 use App\Models\Weather;
+use App\Models\WeatherData;
 
 class PetaniController extends Controller
 {
@@ -52,9 +53,9 @@ class PetaniController extends Controller
     {
         $title  = 'Dashboard';
         $page   = 'Weather';
-        // $data   = Weather::get();
+        $data   = WeatherData::orderBy('id', 'DESC')->get()->first();
         $hari   = Weather::where('type', 'harian')->get();
         $jam    = Weather::where('type', 'jam')->get();
-        return view('farmer.weather', compact('title', 'page', 'hari', 'jam'));
+        return view('farmer.weather', compact('title', 'page', 'hari', 'jam', 'data'));
     }
 }
