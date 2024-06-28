@@ -52,6 +52,9 @@ class PetaniController extends Controller
     {
         $title  = 'Dashboard';
         $page   = 'Weather';
-        return view('farmer.weather', compact('title', 'page'));
+        // $data   = Weather::get();
+        $hari   = Weather::where('type', 'harian')->get();
+        $jam    = Weather::where('type', 'jam')->get();
+        return view('farmer.weather', compact('title', 'page', 'hari', 'jam'));
     }
 }
