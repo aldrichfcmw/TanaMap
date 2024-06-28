@@ -6,7 +6,7 @@
 <div class="row">
   <div class="col-12">
     <div class="card">
-      <h5 class="card-header">Disease Table</h5>
+      <h5 class="card-header">Tool Table</h5>
       <div class="table-responsive text-nowrap">
         <table class="table">
           <thead class="table-light">
