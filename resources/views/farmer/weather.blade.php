@@ -12,7 +12,7 @@
             <div class="card-body">
               <h5 class="card-title">Suhu</h5>
               <p class="card-text">
-                32
+                {{$data -> temp}}
               </p>            
             </div>
           </div>
@@ -29,7 +29,7 @@
             <div class="card-body">
               <h5 class="card-title">Kelembapan</h5>
               <p class="card-text">
-                22
+                {{$data -> hum}}
               </p>            
             </div>
           </div>
@@ -46,7 +46,7 @@
             <div class="card-body">
               <h5 class="card-title">Tekanan</h5>
               <p class="card-text">
-                22
+                {{$data -> press}}
               </p>            
             </div>
           </div>
@@ -63,7 +63,7 @@
             <div class="card-body">
               <h5 class="card-title">UV</h5>
               <p class="card-text">
-                22
+                {{$data -> uv}}
               </p>            
             </div>
           </div>
@@ -83,7 +83,7 @@
             <div class="card-body">
               <h5 class="card-title">Curah Hujan</h5>
               <p class="card-text">
-                32
+                {{$data -> rainfall}}
               </p>            
             </div>
           </div>
@@ -100,7 +100,7 @@
             <div class="card-body">
               <h5 class="card-title">Arah</h5>
               <p class="card-text">
-                22
+                {{$data -> winddir}}
               </p>
             </div>
           </div>
@@ -117,7 +117,7 @@
             <div class="card-body">
               <h5 class="card-title">Kecepatan Angin</h5>
               <p class="card-text">
-                22
+                {{$data -> windspeed}}
               </p>
             </div>
           </div>
@@ -134,7 +134,7 @@
             <div class="card-body">
               <h5 class="card-title">Koordinat</h5>
               <p class="card-text">
-                -7.090, 112.000
+                {{$data -> latitude}}, {{$data -> longitude}}
               </p>
             </div>
           </div>
@@ -154,31 +154,19 @@
                         <table class="table">
                           <thead>
                             <tr>
-                              <th>Hari</th>
+                              <th>ID</th>
+                              <th>Time</th>
                               <th>Cuaca</th>
                             </tr>
                           </thead>
                           <tbody class="table-border-bottom-0">
+                            @foreach ($jam as $key => $d)
                             <tr>
-                              <td> <strong>besok</strong></td>
-                              <td>hujan</td>
+                                <td>{{ $d -> weather_name }}</td>
+                                <td>{{ $d -> time }}</td>
+                                <td>{{ $d -> description }}</td>
                             </tr>
-                            <tr>
-                              <td> <strong>besok</strong></td>
-                              <td>hujan</td>
-                            </tr>
-                            <tr>
-                              <td> <strong>besok</strong></td>
-                              <td>hujan</td>
-                            </tr>
-                            <tr>
-                              <td> <strong>besok</strong></td>
-                              <td>hujan</td>
-                            </tr>
-                            <tr>
-                              <td> <strong>besok</strong></td>
-                              <td>hujan</td>
-                            </tr>
+                            @endforeach 
                           </tbody>
                         </table>
                       </div>
@@ -191,31 +179,19 @@
                         <table class="table">
                           <thead>
                             <tr>
-                              <th>Hari</th>
+                              <th>ID</th>
+                              <th>Time</th>
                               <th>Cuaca</th>
                             </tr>
                           </thead>
                           <tbody class="table-border-bottom-0">
+                            @foreach ($hari as $key => $d)
                             <tr>
-                              <td> <strong>besok</strong></td>
-                              <td>hujan</td>
+                                <td>{{ $d -> weather_name }}</td>
+                                <td>{{ $d -> time }}</td>
+                                <td>{{ $d -> description }}</td>
                             </tr>
-                            <tr>
-                              <td> <strong>besok</strong></td>
-                              <td>hujan</td>
-                            </tr>
-                            <tr>
-                              <td> <strong>besok</strong></td>
-                              <td>hujan</td>
-                            </tr>
-                            <tr>
-                              <td> <strong>besok</strong></td>
-                              <td>hujan</td>
-                            </tr>
-                            <tr>
-                              <td> <strong>besok</strong></td>
-                              <td>hujan</td>
-                            </tr>
+                            @endforeach 
                           </tbody>
                         </table>
                       </div>
@@ -227,7 +203,7 @@
           <div class="card h-100">
               <h5 class="card-header">Maps</h5>
               <div class="card-body">
-                <div class="leaflet-map h-100" id="layerControl"></div>
+                <div class="leaflet-map h-md-100" id="map"></div>
               </div>
           </div>
       </div>
@@ -236,5 +212,66 @@
   </div>
 </div>
 
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+{{-- <script src="https://unpkg.com/leaflet.gridlayer.googlemutant/Leaflet.GoogleMutant.js"></script> --}}
+{{-- <script>
+    var averageLat = {{ $avgLat }};
+    var averageLong = {{ $avgLong }};
+    var map = L.map('map').setView([averageLat, averageLong], 14);
 
+    // Layer jalan dari Google Maps
+    var roadmapLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        maxZoom: 19,
+    });
+
+    // Layer satelit dari Google Maps
+    var satelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        maxZoom: 19,
+    });
+
+    // Tambahkan layer jalan ke peta sebagai default
+    roadmapLayer.addTo(map);
+
+    // Tambahkan kontrol layer untuk beralih antara layer jalan dan satelit
+    var baseMaps = {
+        "Roadmap": roadmapLayer,
+        "Satellite": satelliteLayer
+    };
+
+    L.control.layers(baseMaps).addTo(map);
+
+    var locations = @json($data); // Pass PHP variable to JavaScript
+
+    var markers = [];
+    var activeMarker = null;
+
+    function getCustomIcon(size = [30, 47]) {
+        var iconUrl = '{{ asset("img/icons/marker/red-marker.png") }}';
+
+        return L.icon({
+            iconUrl: iconUrl,
+            iconSize: size, // Size of the marker image
+            iconAnchor: [size[0] / 2, size[1]], // Anchor position of the marker
+            popupAnchor: [0, -size[1]] // Popup position above the marker
+        });
+    }
+
+    locations.forEach(function(location) {
+        var marker = L.marker([location.latitude, location.longitude], {icon: getCustomIcon()}).addTo(map)
+            .bindPopup('<b>' + location.growth_name + '</b><br>Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude);
+        
+        markers.push(marker);
+
+        marker.on('click', function() {
+            if (activeMarker) {
+                activeMarker.setIcon(getCustomIcon());
+            }
+            this.setIcon(getCustomIcon([40, 63])); // Set to larger size when clicked
+            activeMarker = this;
+        });    
+    });
+</script> --}}
 @endsection
+
