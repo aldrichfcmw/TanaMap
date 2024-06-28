@@ -42,6 +42,17 @@
                       <div class="valid-feedback"> Looks good! </div>
                       <div class="invalid-feedback"> Please enter your password. </div>
                     </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="bs-validation-select">Select Role</label>
+                      <select class="custom-select form-control" name="role" id="role">
+                        <option selected>Open this select role</option>
+                        @foreach ($data as $key => $d)
+                        <option value="{{$d->name}}">{{$d->name}}</option>
+                        @endforeach
+                      </select>
+                      <div class="valid-feedback"> Looks good! </div>
+                      <div class="invalid-feedback"> Please enter a valid email </div>
+                    </div>
                     <div class="row">
                       <div class="col-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -54,9 +65,9 @@
             <!-- /Validation Wizard -->
 
           </div>
-          <script src="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.js')}}"></script>
+          {{-- <script src="{{asset('/vendor/libs/bootstrap-select/bootstrap-select.js')}}"></script> --}}
           <script src="{{asset('/vendor/libs/@form-validation/popular.js')}}"></script>
           <script src="{{asset('/vendor/libs/@form-validation/bootstrap5.js')}}"></script>
           <script src="{{asset('/vendor/libs/@form-validation/auto-focus.js')}}"></script>
-          <script src="{{asset('/js/form-validation.js')}}"></script>
+          {{-- <script src="{{asset('/js/form-validation.js')}}"></script> --}}
 @endsection

@@ -15,6 +15,7 @@
               <th>Users</th>
               <th>Username</th>
               <th>Email</th>
+              <th>Role</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -25,6 +26,16 @@
                   <td>{{ $d -> name }}</td>
                   <td>{{ $d -> username }}</td>
                   <td>{{ $d -> email }}</td>
+                  
+                  <td>
+                    @foreach ($d->roles as $role)
+                        {{ $role->name }}
+                        @unless ($loop->last)
+                            ,
+                        @endunless
+                    @endforeach
+                </td>
+
                   <td>
                       <div class="dropdown">
                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
