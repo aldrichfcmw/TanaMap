@@ -39,13 +39,13 @@ Route::group(['prefix' => '/', 'middleware' => ['auth', 'role:admin'], 'as' => '
     Route::get('/growth', [DashboardController::class, 'growth'])->name('growth');
     Route::get('/tool', [DashboardController::class, 'tool'])->name('tool');
     Route::get('/weather', [DashboardController::class, 'weather'])->name('weather');
-    Route::delete('/maps', [DashboardController::class, 'maps'])->name('maps');
+    Route::get('/weather/data', [DashboardController::class, 'weatherData'])->name('weather.data');
+    Route::get('/weather/predict', [DashboardController::class, 'weatherPredict'])->name('weather.predict');
 
     Route::get('/data/edit/{type}/{uname}', [DashboardController::class, 'dataEdit'])->name('data.edit');
     Route::put('/data/update/{type}/{uname}', [DashboardController::class, 'dataUpdate'])->name('data.update');
     Route::delete('/data/delete/{type}/{uname}', [DashboardController::class, 'dataDelete'])->name('data.delete');
 
-    // Route::get('/users', [UserController::class, 'user'])->name('user');
     Route::get('/users/list', [UserController::class, 'userList'])->name('user.list');
     Route::get('/users/add', [UserController::class, 'userAdd'])->name('user.add');
     Route::post('/users/add/create', [UserController::class, 'storeUser'])->name('user.create');
