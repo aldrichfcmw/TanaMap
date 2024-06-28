@@ -9,6 +9,7 @@ use App\Models\Disease;
 use App\Models\Growth;
 use App\Models\Tool;
 use App\Models\Weather;
+use App\Models\WeatherData;
 
 
 class DashboardController extends Controller
@@ -19,7 +20,11 @@ class DashboardController extends Controller
         $title  = 'Dashboard';
         $page   = 'Overview';
         $subpage = '';
-        return view('dashboard.index', compact('title', 'page', 'subpage'));
+        $dataDisease   =  Disease::limit(5)->get();
+        $dataGrowth   =  Growth::limit(5)->get();
+        $dataTool   =  Tool::limit(5)->get();
+        $dataWeather   =  weather::limit(5)->get();
+        return view('dashboard.index', compact('title', 'page', 'subpage', 'dataDisease', 'dataGrowth', 'dataTool', 'dataWeather'));
     }
 
     public function disease()
@@ -54,6 +59,24 @@ class DashboardController extends Controller
         $title  = 'Farmer';
         $page   = 'Weather';
         $subpage = '';
+        $data   =  Weather::get();
+        return view('admin.weather', compact('title', 'page', 'subpage', 'data'));
+    }
+
+    public function weatherData()
+    {
+        $title  = 'Farmer';
+        $page   = 'Weather';
+        $subpage = 'Data';
+        $data   =  WeatherData::get();
+        return view('admin.weather', compact('title', 'page', 'subpage', 'data'));
+    }
+
+    public function weatherPredict()
+    {
+        $title  = 'Farmer';
+        $page   = 'Weather';
+        $subpage = 'Prediction';
         $data   =  Weather::get();
         return view('admin.weather', compact('title', 'page', 'subpage', 'data'));
     }
@@ -154,6 +177,14 @@ class DashboardController extends Controller
             }
             $data->delete();
             return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil dihapus');
+        }
+        if ($type == 'weather data') {
+            $data = weatherData::whereWeather_name($uname);
+            if (!$data) {
+                return redirect()->route('weather.data')->with('error', 'Data gagal dihapus');
+            }
+            $data->delete();
+            return redirect()->route('weather.data')->with('success', 'Data berhasil dihapus');
         }
     }
 }
