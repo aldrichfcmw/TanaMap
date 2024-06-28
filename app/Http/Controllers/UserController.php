@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -25,7 +26,12 @@ class UserController extends Controller
         $page   = 'List Users';
         $subpage   = '';
         $data   =  User::get();
-        return view('dashboard.user-list', compact('title', 'page', 'subpage', 'data'));
+        $roles = Role::all();
+        // $data = DB::table('users')
+        //     ->select('users.id', 'users.name', 'users.username', 'users.email', 'roles.name as role_name')
+        //     ->leftJoin('roles', 'role_user.role_id', '=', 'roles.id')
+        //     ->get();
+        return view('dashboard.user-list', compact('title', 'page', 'subpage', 'data', 'roles'));
     }
 
     public function userAdd()
@@ -33,7 +39,8 @@ class UserController extends Controller
         $title  = 'User';
         $page   = 'Add User';
         $subpage   = '';
-        return view('dashboard.user-add', compact('title', 'page', 'subpage'));
+        $data = Role::all();
+        return view('dashboard.user-add', compact('title', 'page', 'subpage', 'data'));
     }
 
     public function storeUser(Request $request)
@@ -44,6 +51,7 @@ class UserController extends Controller
             'username'  => 'required|unique:users,username|max:255',
             'email'     => 'required|email|unique:users,email',
             'password'  => 'required|min:6',
+            'role' => 'required|string|exists:roles,name',
         ]);
 
         if ($validator->fails()) {
@@ -57,18 +65,20 @@ class UserController extends Controller
             'email'     => $request->email,
             'password'  => Hash::make($request->password),
         ];
-        User::create($data);
-        return redirect()->route('user')->with('success', 'Akun berhasil dibuat');
+        $user = User::create($data);
+        $user->assignRole($request->role);
+        return redirect()->route('user.list')->with('success', 'Akun berhasil dibuat');
     }
 
     public function userEdit(Request $request, $uname)
     {
         $data = User::where('username', $uname)->first();
+        $roles = Role::all();
         // dd($data);
         $title  = 'Users';
         $page   = 'Edit Users';
         $subpage = '';
-        return view('dashboard.user-edit', compact('title', 'page', 'subpage', 'data'));
+        return view('dashboard.user-edit', compact('title', 'page', 'subpage', 'data', 'roles'));
     }
 
     public function userUpdate(Request $request, $uname)
@@ -80,6 +90,7 @@ class UserController extends Controller
             'username'  => 'required|',
             'email'     => 'required|email',
             'password'  => 'nullable|min:6',
+            'role' => 'required|string|exists:roles,name',
         ]);
 
         if ($validator->fails()) {
@@ -96,7 +107,10 @@ class UserController extends Controller
 
         // dd($data);
         User::whereUsername($uname)->update($data);
-        return redirect()->route('user')->with('success', 'Akun berhasil diubah');
+        $user = User::where('username', $uname)->firstOrFail();
+        // dd($user);
+        $user->syncRoles($request->role);
+        return redirect()->route('user.list')->with('success', 'Akun berhasil diubah');
     }
 
     public function userDelete(Request $request, $uname)
