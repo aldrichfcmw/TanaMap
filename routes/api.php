@@ -25,4 +25,5 @@ Route::middleware('auth:sanctum')->post('/store-data', [ApiController::class, 's
 Route::middleware(['auth:sanctum', 'role:admin|farmer hpt'])->post('/disease-data', [ApiController::class, 'storeDisease']);
 Route::middleware(['auth:sanctum', 'role:admin|farmer growth'])->post('/growth-data', [ApiController::class, 'storeGrowth']);
 Route::middleware(['auth:sanctum', 'role:admin|farmer tool'])->post('/tool-data', [ApiController::class, 'storeTool']);
-Route::middleware(['auth:sanctum', 'role:admin|farmer weather'])->post('/weather-data', [ApiController::class, 'storeWeather']);
+Route::middleware(['auth:sanctum', 'role:admin|farmer weather'])->post('/weather-data', [ApiController::class, 'storeWeatherData']);
+Route::middleware(['auth:sanctum', 'role:admin|farmer weather'])->post('/weather-predict', [ApiController::class, 'storeWeatherPredict']);
