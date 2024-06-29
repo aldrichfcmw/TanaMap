@@ -183,7 +183,7 @@ class ApiController extends Controller
             'longitude' =>  $request->longitude,
             'time' =>  $request->timestamp
         ];
-        Weather::create($data);
+        WeatherData::create($data);
 
         return response()->json(['message' => 'Data berhasil disimpan'], 200);
     }
