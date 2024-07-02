@@ -140,51 +140,80 @@ class DashboardController extends Controller
     public function dataDelete($type, $uname, Request $request)
     {
         if ($type == 'disease') {
-            $data = Disease::whereDisease_name($uname);
-            if (!$data) {
-                return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal diubah');
+            if ($uname == 'all') {
+                Disease::truncate();
+                $files = Storage::disk('public')->allFiles('images/disease');
+                Storage::disk('public')->delete($files);
+                return redirect()->route($type)->with('success', 'Semua data ' . $type . ' berhasil dihapus');
+            } else {
+                $data = Disease::whereDisease_name($uname);
+                if (!$data) {
+                    return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal dihapus');
+                }
+                $data->delete();
+                if (Storage::disk('public')->exists('images/disease/' . $request->image)) {
+                    Storage::disk('public')->delete('images/disease/' . $request->image);
+                }
+                return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil dihapus');
             }
-            $data->delete();
-            if (Storage::disk('public')->exists('images/disease/' . $request->image)) {
-                Storage::disk('public')->delete('images/disease/' . $request->image);
-            }
-            return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil diubah');
         }
         if ($type == 'tool') {
-            $data = Tool::whereTool_name($uname);
-            // dd($request->all());
-            if (!$data) {
-                return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal diubah');
+            if ($uname == 'all') {
+                Tool::truncate();
+                $files = Storage::disk('public')->allFiles('images/tool');
+                Storage::disk('public')->delete($files);
+                return redirect()->route($type)->with('success', 'Semua data ' . $type . ' berhasil dihapus');
+            } else {
+                $data = Tool::whereTool_name($uname);
+                // dd($request->all());
+                if (!$data) {
+                    return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal diubah');
+                }
+                $data->delete();
+                if (Storage::disk('public')->exists('images/tool/' . $request->image)) {
+                    Storage::disk('public')->delete('images/tool/' . $request->image);
+                }
+                return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil diubah');
             }
-            $data->delete();
-            if (Storage::disk('public')->exists('images/tool/' . $request->image)) {
-                Storage::disk('public')->delete('images/tool/' . $request->image);
-            }
-            return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil diubah');
         }
         if ($type == 'growth') {
-            $data = growth::whereGrowth_name($uname);
-            if (!$data) {
-                return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal dihapus');
+            if ($uname == 'all') {
+                growth::truncate();
+                return redirect()->route($type)->with('success', 'Semua data ' . $type . ' berhasil dihapus');
+            } else {
+                $data = growth::whereGrowth_name($uname);
+                if (!$data) {
+                    return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal dihapus');
+                }
+                $data->delete();
+                return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil dihapus');
             }
-            $data->delete();
-            return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil dihapus');
         }
         if ($type == 'weather') {
-            $data = weather::whereWeather_name($uname);
-            if (!$data) {
-                return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal dihapus');
+            if ($uname == 'all') {
+                weather::truncate();
+                return redirect()->route($type)->with('success', 'Semua data ' . $type . ' berhasil dihapus');
+            } else {
+                $data = weather::whereWeather_name($uname);
+                if (!$data) {
+                    return redirect()->route($type)->with('error', 'Data ' . $type . 'gagal dihapus');
+                }
+                $data->delete();
+                return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil dihapus');
             }
-            $data->delete();
-            return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil dihapus');
         }
-        if ($type == 'weather data') {
-            $data = weatherData::whereWeather_name($uname);
-            if (!$data) {
-                return redirect()->route('weather.data')->with('error', 'Data gagal dihapus');
+        if ($type == 'weather.data') {
+            if ($uname == 'all') {
+                weatherData::truncate();
+                return redirect()->route($type)->with('success', 'Semua data ' . $type . ' berhasil dihapus');
+            } else {
+                $data = weatherData::whereWeather_name($uname);
+                if (!$data) {
+                    return redirect()->route('weather.data')->with('error', 'Data gagal dihapus');
+                }
+                $data->delete();
+                return redirect()->route('weather.data')->with('success', 'Data berhasil dihapus');
             }
-            $data->delete();
-            return redirect()->route('weather.data')->with('success', 'Data berhasil dihapus');
         }
     }
 }
