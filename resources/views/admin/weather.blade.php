@@ -6,7 +6,20 @@
 <div class="row">
   <div class="col-12">
     <div class="card">
-      <h5 class="card-header">Weather Table</h5>
+      <div class="row">
+        <div class="col-11">
+          <h5 class="card-header">Weather Table</h5>
+        </div>
+        <div class="col-1 card-header">
+          <div class="dropdown ">
+            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+            <div class="dropdown-menu">
+                <button class="dropdown-item" onclick="confirmDeleteAll('')"><i class="bx bx-trash me-1"></i> Delete</button> 
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div class="table-responsive text-nowrap">
         @if ($subpage == "Data")
             
@@ -61,7 +74,7 @@
                               <h5>Apakah Anda yakin ingin menghapus data <span id="user">{{ $d->weather_name }}</span>?</h5>
                             </div>
                             <div class="modal-footer">
-                              <form action="{{route('data.delete',['type'=>'weather data','uname'=> $d->weather_name])}}" method="post">
+                              <form action="{{route('data.delete',['type'=>'weather.data','uname'=> $d->weather_name])}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Batal</button>
@@ -142,9 +155,42 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModalAll" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalCenterTitle">Konfirmasi Penghapusan</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>Apakah Anda yakin ingin menghapus semua <span id="user">{{$page}}-{{ $subpage }}</span>?</h5>
+        
+      </div>
+      <div class="modal-footer">
+        @if ($subpage == "Data")
+        <form action="{{route('data.delete',['type'=>'weather.data','uname'=> 'all'])}}" method="post">
+        @endif
+        @if ($subpage == "Prediction")
+        <form action="{{route('data.delete',['type'=>'weather','uname'=> 'all'])}}" method="post">
+        @endif
+          @csrf
+          @method('DELETE')
+          <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-warning">Ya, Hapus</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   function confirmDelete(userId,userName) {
       $('#deleteModal-'+userId).modal('show');
+  }
+  function confirmDeleteAll() {
+      $('#deleteModalAll').modal('show');
   }
 </script>
 
