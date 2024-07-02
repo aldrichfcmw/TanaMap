@@ -1806,6 +1806,7 @@ html:not(.layout-menu-collapsed)
     background-color: #66bb6a !important;
     border: 3px solid #e7e7ff !important;
 }
+
 .app-brand .layout-menu-toggle {
     background-color: #66bb6a;
     /* background-color: #696cff; */
