@@ -25,7 +25,6 @@
                                     <td>{{ $d -> disease_name }}</td>
                                     <td>{{ $d->health_status == '0' ? 'Sehat' : '' }}
                                         {{ $d->health_status == '1' ? 'Terindikasi Hama/Penyakit' : '' }}
-                                        {{-- {{ $d->health_status == '2' ? 'Terindikasi Sakit' : '' }} --}}
                                     </td>  
                                     <td class="text-center">
                                         <a class="text-dark" href="https://www.google.com/maps?q={{ $d -> latitude }},{{ $d -> longitude }}"><i class="bx bx-link-external me-1"></i></a>                  
