@@ -83,8 +83,8 @@
               <div class="card">
                 <h5 class="card-header">Tabel Tool</h5>
                 <div class="card-body row">
-                    <div class="table-responsive text-nowrap">
-                        <table class="table">
+                  <div class="card-datatable table-responsive">
+                    <table class="dt-responsive table border-top">
                             <thead>
                             <tr>
                               <th>No.</th>

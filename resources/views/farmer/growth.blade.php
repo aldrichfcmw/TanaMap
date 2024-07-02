@@ -5,16 +5,16 @@
         <div class="col-12 col-lg-5 mb-3">
             <div class="row">
                 <div class="col mb-3">
-                    <div class="card">
-                        <h5 class="card-header">Bagan Warna</h5>
-                        <img src="{{asset('/img/gallery/bagan_warna.jpg')}}" alt="">
+                    <div class="card p-3">
+                        {{-- <h5 class="card-header">Bagan Warna</h5> --}}
+                        <img src="{{asset('/img/gallery/bagan_warna.png')}}" alt="">
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
                         <h5 class="card-header">Table Disease</h5>
-                        <div class="table-responsive text-nowrap">
-                        <table class="table">
+                        <div class="card-datatable table-responsive">
+                            <table class="dt-responsive table border-top">
                             <thead>
                             <tr>
                                 <th>Lokasi</th>
@@ -49,7 +49,6 @@
     </div>
 </div>   
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-{{-- <script src="https://unpkg.com/leaflet.gridlayer.googlemutant/Leaflet.GoogleMutant.js"></script> --}}
 <script>
     var averageLat = {{ $avgLat }};
     var averageLong = {{ $avgLong }};

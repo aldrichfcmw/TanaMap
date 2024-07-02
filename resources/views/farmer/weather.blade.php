@@ -150,8 +150,8 @@
               <div class="col-12 mb-3">
                   <div class="card">
                       <h5 class="card-header">Prediksi Cuaca Per Jam</h5>
-                      <div class="table-responsive text-nowrap">
-                        <table class="table">
+                      <div class="card-datatable table-responsive">
+                        <table class="dt-responsive table border-top">
                           <thead>
                             <tr>
                               <th>ID</th>
@@ -175,8 +175,8 @@
               <div class="col-12">
                   <div class="card">
                       <h5 class="card-header">Prediksi Cuaca Per Hari</h5>
-                      <div class="table-responsive text-nowrap">
-                        <table class="table">
+                      <div class="card-datatable table-responsive">
+                        <table class="dt-responsive table border-top">
                           <thead>
                             <tr>
                               <th>ID</th>
@@ -214,10 +214,10 @@
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 {{-- <script src="https://unpkg.com/leaflet.gridlayer.googlemutant/Leaflet.GoogleMutant.js"></script> --}}
-{{-- <script>
-    var averageLat = {{ $avgLat }};
-    var averageLong = {{ $avgLong }};
-    var map = L.map('map').setView([averageLat, averageLong], 14);
+<script>
+    var locations = @json($data); // Pass PHP variable to JavaScript
+    // console.log(locations.longitude)
+    var map = L.map('map').setView([locations.latitude, locations.longitude], 14);
 
     // Layer jalan dari Google Maps
     var roadmapLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
@@ -242,11 +242,6 @@
 
     L.control.layers(baseMaps).addTo(map);
 
-    var locations = @json($data); // Pass PHP variable to JavaScript
-
-    var markers = [];
-    var activeMarker = null;
-
     function getCustomIcon(size = [30, 47]) {
         var iconUrl = '{{ asset("img/icons/marker/red-marker.png") }}';
 
@@ -258,20 +253,10 @@
         });
     }
 
-    locations.forEach(function(location) {
-        var marker = L.marker([location.latitude, location.longitude], {icon: getCustomIcon()}).addTo(map)
-            .bindPopup('<b>' + location.growth_name + '</b><br>Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude);
+    var marker = L.marker([locations.latitude, locations.longitude], {icon: getCustomIcon()}).addTo(map)
+      .bindPopup('<b>' + locations.weather_name + '</b><br>Latitude: ' + locations.latitude + '<br>Longitude: ' + locations.longitude);
         
-        markers.push(marker);
-
-        marker.on('click', function() {
-            if (activeMarker) {
-                activeMarker.setIcon(getCustomIcon());
-            }
-            this.setIcon(getCustomIcon([40, 63])); // Set to larger size when clicked
-            activeMarker = this;
-        });    
-    });
-</script> --}}
+    
+</script>
 @endsection
 

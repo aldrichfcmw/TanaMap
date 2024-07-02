@@ -1,22 +1,17 @@
 @push('head')
 {{-- <link rel="stylesheet" href="{{asset('/vendor/libs/datatables-bs5/datatables.bootstrap5')}}">
 <link rel="stylesheet" href="{{asset('/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5')}}"> --}}
-{{-- <link rel="stylesheet" href="{{assets('/vendor/libs/datatables-select-bs5/select.bootstrap5')}}">
-<link rel="stylesheet" href="{{assets('/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes')}}">
-<link rel="stylesheet" href="{{assets('/vendor/libs/datatables-fixedcolumns-bs5/fixedcolumns.bootstrap5')}}">
-<link rel="stylesheet" href="{{assets('/vendor/libs/datatables-fixedheader-bs5/fixedheader.bootstrap5')}}"> --}}
-{{-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> --}}
 @endpush
 @extends('layouts.farmer')
 @section('content')
 <div class="container-fluid flex-grow-1 container-p-y">
     <div class="row h-md-100">
-        <div class="col-12 col-lg-5 mb-3">
-            <div class="card">
+        <div class="col-md-6 col-lg-5 mb-3">
+            <div class="card mb-3">
                 <h5 class="card-header">Table Disease</h5>
                 <div class="card-body row">
-                    <div class="table-responsive text-nowrap">
-                        <table class="table">
+                    <div class="card-datatable table-responsive">
+                        <table class="dt-responsive table nowrap" id="tabel-data">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -26,7 +21,7 @@
                             </thead>
                             <tbody class="table-border-bottom-0">
                                 @foreach ($data as $key => $d)
-                                <tr class="location-row" data-lat="{{ $d->latitude }}" data-long="{{ $d->longitude }}" data-status="{{ $d->health_status }}" >
+                                <tr class="location-row" data-name="{{ $d -> disease_name }}" data-lat="{{ $d->latitude }}" data-long="{{ $d->longitude }}" data-status="{{ $d->health_status }}" data-img="{{ asset('storage/images/disease/' . $d->image) }}">
                                     <td>{{ $d -> disease_name }}</td>
                                     <td>{{ $d->health_status == '0' ? 'Sehat' : '' }}
                                         {{ $d->health_status == '1' ? 'Terindikasi Hama/Penyakit' : '' }}
@@ -42,10 +37,16 @@
                     </div>
                 </div>
             </div>
+            <div class="card" id="image-card" style="">
+                <h5 class="card-header">Image:  <span id="image-name"></span></h5>
+                <div class="card-body row">
+                    <img id="card-image" src="" alt="&nbsp Select row table to show image" style="height: 500px;">
+                </div>
+            </div>
         </div>
-        <div class="col-12 col-lg-7 mb-3">
+        <div class="col-md-6 col-lg-7 mb-3">
             <div class="card h-md-100">
-              <h5 class="card-header">Layer Control</h5>
+              {{-- <h5 class="card-header">Layer Control</h5> --}}
               <div class="card-body">
                 {{-- <div class="leaflet-map h-md-100" id="layerControl"></div> --}}
                 <div class="leaflet-map h-md-100" id="map"></div>
@@ -54,7 +55,7 @@
           </div>
     </div>
 </div>  
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> 
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
     var averageLat = {{ $avgLat }};
     var averageLong = {{ $avgLong }};
@@ -93,8 +94,6 @@
         if (status == 0) {
             iconUrl = '{{ asset("img/icons/marker/green-marker.png") }}';
         } else if (status == 1) {
-            iconUrl = '{{ asset("img/icons/marker/orange-marker.png") }}';
-        } else if (status == 2) {
             iconUrl = '{{ asset("img/icons/marker/red-marker.png") }}';
         }
 
@@ -140,6 +139,15 @@
                 selectedMarker.marker.setIcon(getCustomIcon(status, [40, 63])); // Set to larger size when clicked
                 activeMarker = selectedMarker.marker;
             }
+            var imageSrc  = row.getAttribute('data-img');
+            var rowSrc    = row.getAttribute('data-name');
+            var landArea  = row.getAttribute('data-area')
+            var imageCard = document.getElementById('image-card');
+            var cardImage = document.getElementById('card-image');
+
+            cardImage.src = imageSrc;
+            imageCard.style.display = 'block';
+            document.getElementById('image-name').innerHTML = rowSrc;
         });
     });
 </script>

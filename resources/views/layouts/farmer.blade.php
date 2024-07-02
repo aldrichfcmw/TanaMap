@@ -10,22 +10,7 @@
             height: 100%;
           }
         }
-        .skeleton-loader {
-            width: 100%;
-            height: 300px; /* Adjust height as needed */
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-
-        @keyframes loading {
-            0% {
-                background-position: 200% 0;
-            }
-            100% {
-                background-position: -200% 0;
-            }
-        }
+        
     </style>
   </head>
   <body>
@@ -52,6 +37,4 @@
     <!-- / Layout wrapper -->
     @include('layouts.foot')
     @include('layouts.toast')
-    {{-- <script src="{{asset('/vendor/libs/leaflet/leaflet.js')}}"></script> --}}
-    {{-- <script src="{{asset('/js/maps-leaflet.js')}}"></script> --}}
   </body>
