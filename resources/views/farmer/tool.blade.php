@@ -211,7 +211,7 @@
             var status_sungai = 0 ;
           }
           document.getElementById('weather').innerHTML = 1;
-          document.getElementById('irrigation').innerHTML = 1;
+          document.getElementById('irrigation').innerHTML = status_sungai;
           document.getElementById('soil').innerHTML = area;
           document.getElementById('koordinat').innerHTML = lat + ', ' + long;
       });
