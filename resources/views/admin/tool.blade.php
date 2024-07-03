@@ -31,6 +31,7 @@
               <th>Latitude</th>
               <th>Longitude</th>
               <th>Land Area</th>
+              <th>Sungai</th>
               <th>Image</th>
               <th>Actions</th>
             </tr>
@@ -43,12 +44,13 @@
                   <td>{{ $d -> latitude }}</td>
                   <td>{{ $d -> longitude }}</td>
                   <td>{{ $d -> land_area }}</td>
+                  <td>{{ $d -> status == 0 ? 'Tidak Ada' : 'Ada' }}</td>
                   <td>{{ $d -> image  }}</td>
                   <td>
                       <div class="dropdown">
                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                         <div class="dropdown-menu">
-                          {{-- <a class="dropdown-item" href="{{route('user.edit',['username'=> $d->username])}}"><i class="bx bx-edit-alt me-1"></i> Edit</a> --}}
+                          <a class="dropdown-item" href="{{route('data.edit',['type'=> 'tool','uname'=> $d->tool_name])}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                           <button class="dropdown-item" onclick="confirmDelete('{{ $d->id }}','{{ $d->tool_name }}')"><i class="bx bx-trash me-1"></i> Delete</button> 
                           {{-- <button class="dropdown-item" data-toggle="modal" data-target="#deleteModal{{ $d->username }}"><i class="bx bx-trash me-1"></i> Delete</button>                         --}}
                         </div>

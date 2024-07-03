@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('land_area');
             $table->decimal('latitude', 10, 7);
             $table->decimal('longitude', 10, 7);
+            $table->bigInteger('status');
             $table->string('image');
             $table->timestamps();
         });

@@ -106,7 +106,7 @@ class ApiController extends Controller
             'image' => 'required|file|mimes:jpg,jpeg,png',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
-            'land_area' => 'required|numeric',
+            'status' => 'required|integer|max:1',
         ]);
 
         if ($validator->fails()) {
@@ -139,9 +139,10 @@ class ApiController extends Controller
 
         $data = [
             'tool_name' => $tool_name,
-            'land_area' =>  $request->land_area,
+            'land_area' =>  '0',
             'latitude' =>  $request->latitude,
             'longitude' => $request->longitude,
+            'status' => $request->status,
             'image' =>  $new_filename,
         ];
         Tool::create($data);

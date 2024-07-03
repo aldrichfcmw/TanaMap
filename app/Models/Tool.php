@@ -16,6 +16,7 @@ class Tool extends Model
         'land_area',
         'latitude',
         'longitude',
+        'status',
         'image'
     ];
 

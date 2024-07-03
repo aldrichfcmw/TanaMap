@@ -94,7 +94,7 @@ class DashboardController extends Controller
             $title  = 'Farmer';
             $page   = 'Tool';
             $subpage = 'Edit Data';
-            return view('dashboard.data-edit-disease', compact('title', 'page', 'subpage', 'data'));
+            return view('dashboard.data-edit-tool', compact('title', 'page', 'subpage', 'data'));
         }
     }
     public function dataUpdate(Request $request, $type, $uname)
@@ -115,8 +115,7 @@ class DashboardController extends Controller
             }
             if ($request->image_file != null) {
                 $file = $request->file('image_file');
-                $originalFilename = $file->getClientOriginalName();
-
+                // $originalFilename = $file->getClientOriginalName();
                 $new_filename = $request->image;
                 $path = $file->storeAs('images/disease', $new_filename, 'public');
             }
@@ -134,8 +133,34 @@ class DashboardController extends Controller
             Disease::whereDisease_name($uname)->update($data);
             return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil diubah');
             // dd($request->all());
+        } elseif ($type == 'tool') {
+            $validator = Validator::make($request->all(), [
+                'tool_name' => 'required|string',
+                'land_area' => 'required|string',
+                'latitude' => 'required|numeric',
+                'longitude' => 'required|numeric',
+                'status' => 'required|integer',
+                'image_file' => 'nullable|file|mimes:jpg,jpeg,png'
+            ]);
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+            if ($request->image_file != null) {
+                $file = $request->file('image_file');
+                $new_filename = $request->image;
+                $path = $file->storeAs('images/tool', $new_filename, 'public');
+            }
+            $data = [
+                'tool_name' => $request->tool_name,
+                'land_area' =>  $request->land_area,
+                'latitude' =>  $request->latitude,
+                'longitude' => $request->longitude,
+                'status' =>  $request->status,
+                'image' =>  $request->image,
+            ];
+            Tool::where('tool_name', $uname)->update($data);
+            return redirect()->route($type)->with('success', 'Data ' . $type . ' berhasil diubah');
         }
-        // dd($request->all());
     }
     public function dataDelete($type, $uname, Request $request)
     {
