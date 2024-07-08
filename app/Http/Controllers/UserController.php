@@ -27,10 +27,7 @@ class UserController extends Controller
         $subpage   = '';
         $data   =  User::get();
         $roles = Role::all();
-        // $data = DB::table('users')
-        //     ->select('users.id', 'users.name', 'users.username', 'users.email', 'roles.name as role_name')
-        //     ->leftJoin('roles', 'role_user.role_id', '=', 'roles.id')
-        //     ->get();
+
         return view('dashboard.user-list', compact('title', 'page', 'subpage', 'data', 'roles'));
     }
 
@@ -72,12 +69,17 @@ class UserController extends Controller
 
     public function userEdit(Request $request, $uname)
     {
+        $authUsername = auth()->user()->username;
+        if ($authUsername != 'admin' && $uname == 'admin') {
+            return redirect()->route('user.list')->with('error', 'Anda tidak memiliki akses');
+        }
         $data = User::where('username', $uname)->first();
         $roles = Role::all();
         // dd($data);
         $title  = 'Users';
         $page   = 'Edit Users';
         $subpage = '';
+
         return view('dashboard.user-edit', compact('title', 'page', 'subpage', 'data', 'roles'));
     }
 

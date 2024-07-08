@@ -21,6 +21,9 @@
           </thead>
           <tbody class="table-border-bottom-0">
               @foreach ($data as $key => $d)
+                @if(auth()->check() && auth()->user()->username != 'admin' && $d->username == 'admin')
+                    @continue
+                @endif
                 <tr>
                   <td>{{ $key+1 }}</td>
                   <td>{{ $d -> name }}</td>
