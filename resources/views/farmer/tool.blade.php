@@ -140,9 +140,28 @@
   var averageLong = {{ $avgLong }};
   var map = L.map('map').setView([averageLat, averageLong], 10);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-  }).addTo(map);
+  // Layer jalan dari Google Maps
+  var roadmapLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        maxZoom: 19,
+    });
+
+    // Layer satelit dari Google Maps
+    var satelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        maxZoom: 19,
+    });
+
+    // Tambahkan layer jalan ke peta sebagai default
+    roadmapLayer.addTo(map);
+
+    // Tambahkan kontrol layer untuk beralih antara layer jalan dan satelit
+    var baseMaps = {
+        "Roadmap": roadmapLayer,
+        "Satellite": satelliteLayer
+    };
+
+    L.control.layers(baseMaps).addTo(map);
 
   var locations = @json($data); // Pass PHP variable to JavaScript
 
