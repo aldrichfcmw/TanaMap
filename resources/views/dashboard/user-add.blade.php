@@ -22,7 +22,7 @@
                       <div class="invalid-feedback"> Please enter your name. </div>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label" for="bs-validation-email">usernae</label>
+                      <label class="form-label" for="bs-validation-email">username</label>
                       <input type="text" id="bs-validation" name="username" class="form-control" placeholder="john.doe" aria-label="john.doe" required="">
                       <div class="valid-feedback"> Looks good! </div>
                       <div class="invalid-feedback"> Please enter a valid username </div>
