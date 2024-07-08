@@ -138,18 +138,18 @@
 <script>
   var averageLat = {{ $avgLat }};
   var averageLong = {{ $avgLong }};
-  var map = L.map('map').setView([averageLat, averageLong], 10);
+  var map = L.map('map').setView([averageLat, averageLong], 5);
 
   // Layer jalan dari Google Maps
   var roadmapLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-        maxZoom: 15,
+        maxZoom: 19,
     });
 
     // Layer satelit dari Google Maps
     var satelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-        maxZoom: 15,
+        maxZoom: 19,
     });
 
     // Tambahkan layer jalan ke peta sebagai default
