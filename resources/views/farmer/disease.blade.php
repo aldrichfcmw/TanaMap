@@ -6,7 +6,7 @@
 @section('content')
 <div class="container-fluid flex-grow-1 container-p-y">
     <div class="row h-md-100">
-        <div class="col-md-6 col-lg-5 mb-3">
+        <div class="col-md-6 col-lg-4 mb-3">
             <div class="card mb-3">
                 <h5 class="card-header">Table Disease</h5>
                 <div class="card-body row">
@@ -41,14 +41,14 @@
                 <div class="card-body">
                     <div class="user-avatar-section">
                         <div class=" d-flex align-items-center flex-column">
-                          <img id="card-image" class="img-fluid rounded my-4" src="" height="500" width="500" alt="&nbsp Select row table to show image">
+                          <img id="card-image" class="img-fluid rounded my-4" src="500" height="500" width="500" alt="&nbsp Select row table to show image">
                         </div>
                       </div>
                     {{-- <img id="card-image" src="" alt="&nbsp Select row table to show image" style="height: 500px;"> --}}
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-7 mb-3">
+        <div class="col-md-6 col-lg-8 mb-3">
             <div class="card h-md-100">
               {{-- <h5 class="card-header">Layer Control</h5> --}}
               <div class="card-body">
