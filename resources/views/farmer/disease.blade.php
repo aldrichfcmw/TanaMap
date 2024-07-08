@@ -44,7 +44,7 @@
                     </div>
                     <div class="user-avatar-section">
                         <div class=" d-flex align-items-center flex-column">
-                          <img id="card-image" class="img-fluid rounded my-4" src="500" height="500" width="500" alt="&nbsp Select row table to show image">
+                          <img id="card-image" class="img-fluid rounded" src="500" height="500" width="500" alt="&nbsp Select row table to show image">
                         </div>
                     </div>
                     {{-- <img id="card-image" src="" alt="&nbsp Select row table to show image" style="height: 500px;"> --}}
