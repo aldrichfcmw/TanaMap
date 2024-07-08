@@ -96,7 +96,7 @@
                             </thead>
                             <tbody class="table-border-bottom-0">
                                 @foreach ($data as $key => $d)
-                                <tr class="location-row" data-name="{{ $d -> tool_name }}" data-area="{{ $d -> land_area }}" data-status="{{ $d -> status }}" data-lat="{{ $d->latitude }}" data-long="{{ $d->longitude }}" data-img="{{ asset('storage/images/tool/' . $d->image) }}">
+                                <tr class="location-row" data-name="{{ $d -> tool_name }}" data-area="{{ $d -> land_area }}" data-lat="{{ $d->latitude }}" data-long="{{ $d->longitude }}" data-img="{{ asset('storage/images/tool/' . $d->image) }}">
                                   <td>{{ $key+1 }}</td>
                                   <td>{{ $d -> tool_name }}</td>
                                   <td>{{ $d -> latitude }}, {{ $d -> longitude }}</td>
@@ -195,24 +195,21 @@
           }
           var imageSrc  = row.getAttribute('data-img');
           var rowSrc    = row.getAttribute('data-name');
-          var landArea  = row.getAttribute('data-area')
-          var statusSungai  = row.getAttribute('data-status')
+          var landArea  = row.getAttribute('data-area');
           var imageCard = document.getElementById('image-card');
           var cardImage = document.getElementById('card-image');
 
           cardImage.src = imageSrc;
           imageCard.style.display = 'block';
           document.getElementById('image-name').innerHTML = rowSrc;
-          var area = Math.ceil(landArea / 400);
+          var areaS = Math.ceil(landArea / 400);
+          var areaW = Math.ceil(landArea / 10000);
+          var areaI =  Math.ceil(landArea / 10000);
           // console.log(area);
-          if (statusSungai == 1){
-            var status_sungai = 1 ;
-          } else{
-            var status_sungai = 0 ;
-          }
-          document.getElementById('weather').innerHTML = 1;
-          document.getElementById('irrigation').innerHTML = status_sungai;
-          document.getElementById('soil').innerHTML = area;
+
+          document.getElementById('weather').innerHTML = areaW;
+          document.getElementById('irrigation').innerHTML = areaI;
+          document.getElementById('soil').innerHTML = areaS;
           document.getElementById('koordinat').innerHTML = lat + ', ' + long;
       });
   });
