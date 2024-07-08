@@ -205,10 +205,7 @@
           var areaS = Math.ceil(landArea / 400);
           var areaW = Math.ceil(landArea / 10000);
           var areaI =  Math.ceil(landArea / 10000);
-          console.log(landArea);
-          console.log(areaS);
-          console.log(areaW);
-          console.log(areaI);
+          console.log(landArea,areaS,areaW,areaI);
 
           document.getElementById('weather').innerHTML = areaW;
           document.getElementById('irrigation').innerHTML = areaI;
