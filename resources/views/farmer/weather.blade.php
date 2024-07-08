@@ -1,4 +1,7 @@
 @extends('layouts.farmer')
+@push('head')
+<meta http-equiv="refresh" content="30">    
+@endpush
 @section('content')
 <div class="container-fluid flex-grow-1 container-p-y">
   <div class="row mb-3">
