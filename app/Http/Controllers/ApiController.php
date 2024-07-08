@@ -296,10 +296,10 @@ class ApiController extends Controller
     private function isInYogyakarta($latitude, $longitude)
     {
         // Definisikan batas koordinat untuk Jogja
-        $northBoundary = -7.748917;
-        $southBoundary = -7.836944;
-        $eastBoundary = 110.450000;
-        $westBoundary = 110.323333;
+        $northBoundary = -7.541905;
+        $southBoundary = -8.200853;
+        $eastBoundary = 110.834629;
+        $westBoundary = 110.117941;
 
         // Periksa apakah koordinat berada dalam batas
         if (
