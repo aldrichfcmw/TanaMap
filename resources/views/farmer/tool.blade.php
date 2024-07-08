@@ -90,7 +90,7 @@
                               <th>No.</th>
                               <th>Name</th>
                               <th>Location</th>
-                              <th>Land Area</th>
+                              <th>Land Area (<span style = "text-transform: lowercase">m</span><sup>2</sup>)</th>
                               <th>Action</th>
                             </tr>
                             </thead>
@@ -225,15 +225,14 @@
           var areaS = Math.ceil(landArea / 400);
           var areaW = Math.ceil(landArea / 10000);
           var areaI =  Math.ceil(landArea / 10000);
-          console.log(landArea,areaS,areaW,areaI);
           
           var status_sungai;
           if (statusSungai == 1){	
             status_sungai = areaI;	         
           } else{	  
-            status_sungai = areaI ;
+            status_sungai = 0 ;
           }
-
+          // console.log(landArea,areaS,areaW,areaI,statusSungai, status_sungai);
 
           document.getElementById('weather').innerHTML = areaW;
           document.getElementById('irrigation').innerHTML = status_sungai;
