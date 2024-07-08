@@ -52,7 +52,7 @@
 <script>
     var averageLat = {{ $avgLat }};
     var averageLong = {{ $avgLong }};
-    var map = L.map('map').setView([averageLat, averageLong], 14);
+    var map = L.map('map').setView([averageLat, averageLong], 8);
 
     // Layer jalan dari Google Maps
     var roadmapLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
