@@ -12,7 +12,7 @@
                 <div class="card-body">
                   <div class="user-avatar-section">
                     <div class=" d-flex align-items-center flex-column">
-                      <img class="img-fluid rounded my-4" src="{{ asset('storage/images/disease/' . $data->image) }}" height="110" width="110" alt="User avatar">
+                      <img class="img-fluid rounded my-4" src="{{ asset('storage/images/tool/' . $data->image) }}" height="110" width="110" alt="User avatar">
                       <div class="user-info text-center">
                         <h6 class="mb-2">{{$data->image}}</h6>
                       </div>

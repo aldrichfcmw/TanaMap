@@ -38,8 +38,16 @@
             </div>
             <div class="card" id="image-card" style="">
                 <h5 class="card-header">Image:  <span id="image-name"></span></h5>
-                <div class="card-body row">
-                    <img id="card-image" src="" alt="&nbsp Select row table to show image" style="height: 500px;">
+                <div class="card-body">
+                    <div class="user-avatar-section">
+                        <div class=" d-flex align-items-center flex-column">
+                          <img class="img-fluid rounded my-4" src="" height="500" width="500" alt="&nbsp Select row table to show image">
+                          <div class="user-info text-center">
+                            <h6 class="mb-2">{{$data->image}}</h6>
+                          </div>
+                        </div>
+                      </div>
+                    {{-- <img id="card-image" src="" alt="&nbsp Select row table to show image" style="height: 500px;"> --}}
                 </div>
             </div>
         </div>
