@@ -122,7 +122,7 @@ class UserController extends Controller
             $data->delete();
         }
 
-        return redirect()->route('user')->with('success', 'Akun berhasil dihapus');
+        return redirect()->route('user.list')->with('success', 'Akun berhasil dihapus');
     }
 
     public function accountView()
