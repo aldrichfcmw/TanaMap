@@ -30,7 +30,7 @@
               <th>Location</th>
               <th>Latitude</th>
               <th>Longitude</th>
-              <th>Land Area</th>
+              <th>Land Area (<span style = "text-transform: lowercase">m</span><sup>2</sup>)</th>
               <th>Sungai</th>
               <th>Image</th>
               <th>Actions</th>

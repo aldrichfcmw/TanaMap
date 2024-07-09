@@ -45,7 +45,7 @@
                       </div>
                       <div class="mb-3 col-12 col-md-6">
                         <label class="form-label" for="">Land Area</label>
-                        <input type="text" id="land_area" name="land_area" class="form-control" placeholder="Healthy Area" value="{{$data->land_area}}">
+                        <input type="text" id="land_area" name="land_area" class="form-control" placeholder="Land Area" value="{{$data->land_area}}">
                       </div>
                       <div class="mb-3 col-12 col-md-6">
                         <label class="form-label" for="">Terdapat Sungai?</label>

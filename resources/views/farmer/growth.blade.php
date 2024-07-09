@@ -12,7 +12,7 @@
                 </div>
                 <div class="col">
                     <div class="card">
-                        <h5 class="card-header">Table Disease</h5>
+                        <h5 class="card-header">Table Growth</h5>
                         <div class="card-datatable table-responsive">
                             <table class="dt-responsive table border-top">
                             <thead>

@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@push('head')
+<meta http-equiv="refresh" content="15">    
+@endpush
 @section('content')
 <h4 class="py-3 mb-4">
     <span class="text-muted fw-light">{{$title}} / </span> {{$page}}
@@ -71,7 +74,7 @@
                       <th>No.</th>
                       <th>Name</th>
                       <th>Location</th>
-                      <th>Land Area</th>
+                      <th>Land Area (<span style = "text-transform: lowercase">m</span><sup>2</sup>)</th>
                       <th>Action</th>
                     </tr>
                     </thead>
