@@ -20,10 +20,10 @@ class DashboardController extends Controller
         $title  = 'Dashboard';
         $page   = 'Overview';
         $subpage = '';
-        $dataDisease   =  Disease::limit(5)->get();
-        $dataGrowth   =  Growth::limit(5)->get();
-        $dataTool   =  Tool::limit(5)->get();
-        $dataWeather   =  weather::limit(5)->get();
+        $dataDisease   =  Disease::orderBy('id', 'DESC')->limit(5)->get();
+        $dataGrowth   =  Growth::orderBy('id', 'DESC')->limit(5)->get();
+        $dataTool   =  Tool::orderBy('id', 'DESC')->limit(5)->get();
+        $dataWeather   =  weather::orderBy('id', 'DESC')->limit(5)->get();
         return view('dashboard.index', compact('title', 'page', 'subpage', 'dataDisease', 'dataGrowth', 'dataTool', 'dataWeather'));
     }
 
